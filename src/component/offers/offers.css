@@ -1,0 +1,27 @@
+.carousel-main {
+    width: 90%;
+    margin: auto;
+    top: 128px;
+    position: relative;
+}
+.carousel-item img {
+    object-fit: fill;
+    object-position: center;
+    height: 60vh;
+    overflow: hidden;
+
+  }
+  .carousel-item:before {
+    object-fit: cover;
+    object-position: center;
+    content: "";
+    background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.5));
+    display: block;
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 60vh;
+  }
+  .carousel-inner > .item{
+    width: 100%;
+ }

@@ -1,0 +1,78 @@
+.footer-main {
+    width: 100%;
+    background: #f9f9f9;
+    height: 350px;
+    top: 40vh;
+    display: inline-table;
+    position: relative;
+}
+.footer {
+  padding: 40px;
+  }
+  
+  .footer h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .footer ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .footer ul li {
+    margin-bottom: 10px;
+  }
+  
+  ul > .about-info, ul > .customer-policy {
+    color: #777;
+    text-decoration: none;
+  }
+  .social-media-main {
+    margin-bottom: 20px;
+    display: inline-block;
+  }
+  .social-icons {
+    display: flex;
+   
+  }
+  
+  .social-icons > svg {
+    height: 24px;
+    width: 24px;
+    margin-right: 20px;
+  }
+  .news-letter {
+    display: block;
+    margin-top: 20px;
+  }
+
+  .footer form {
+    display: flex;
+    margin-top: 20px;
+  }
+  
+  .footer form input[type="email"] {
+    flex-grow: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+  }
+  
+  .footer form button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    font-size:
+  }  
+
+  .footer-line{
+    border-bottom: 1px solid #CFD7DF;
+    margin: 20px 0px;
+  }
