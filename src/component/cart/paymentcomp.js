@@ -16,8 +16,7 @@ const Paymentcomp = () => {
   const elements = useElements();
   const payBtn = useRef(null);
   const navigate = useNavigate();
-
-
+  const orderData = {}
   const addOrder = async () => {
     try {
       const config = { headers: { "Content-Type": "application/json" } };
