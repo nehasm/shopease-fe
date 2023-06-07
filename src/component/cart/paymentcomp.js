@@ -1,4 +1,4 @@
-import React, { Fragment, useRef } from "react";
+import React, { Fragment, useRef, useState } from "react";
 import {
   CardNumberElement,
   CardCvcElement,
@@ -12,12 +12,25 @@ import axios from "axios";
 
 const Paymentcomp = () => {
   const stripe = useStripe();
+  const [error,setError] = useState("");
   const elements = useElements();
   const payBtn = useRef(null);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const successfullPay = () => {
-    navigate('/success')
+
+  const addOrder = async () => {
+    try {
+      const config = { headers: { "Content-Type": "application/json" } };
+      const { data } = await axios.post(
+        `/api/v1/order`,
+        orderData,
+        config
+      );
+      navigate('/success')
+    } catch (error) {
+      setError("Unable to place your order.Money will be refunded in your account if it is deducted. Sorry for the inconvience.")
+    }
+    
   }
   const paymentData = {
     amount: Math.round(333 * 100),
@@ -63,24 +76,23 @@ const Paymentcomp = () => {
 
       if (result.error) {
         payBtn.current.disabled = false;
-
-        console.log(result.error.message);
+        setError("Unable to confirm your payment status. Money will be refunded in your account if it is deducted. Sorry for the inconvience.")
       } else {
         if (result.paymentIntent.status === "succeeded") {
-
-          successfullPay()
+          addOrder()
         } else {
-          console.log("There's some issue while processing payment ");
+          setError("There is some issue occur in your payment status. Money will be refunded in your account if it is deducted. Sorry for the inconvience.")
         }
       }
     } catch (error) {
       payBtn.current.disabled = false;
-      console.log(error);
+      setError("Technical glitch occur in your payment process. Sorry for the inconvience.")
     }
   };
 
   return (
     <Fragment>
+      {error !== "" ? <p>{error}</p> : 
       <div className="paymentContainer">
         <form className="paymentForm" onSubmit={(e) => submitHandler(e)}>
           <div>
@@ -101,6 +113,7 @@ const Paymentcomp = () => {
           />
         </form>
       </div>
+      }
     </Fragment>
   );
 };
