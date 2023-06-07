@@ -1,4 +1,4 @@
-import React from 'react'; 
+import React, { useEffect, useState } from 'react'; 
 import {createBrowserRouter,RouterProvider} from 'react-router-dom'; 
 import Main from './routes/main';
 import Product from './routes/product';
@@ -15,6 +15,9 @@ import ProfileData from './component/user/profileData';
 import Cart from './routes/cart';
 import WishList from './routes/wishlist';
 import Orders from './routes/orders';
+import Payment from './routes/payment';
+import Success from './routes/success';
+
 
 const router = createBrowserRouter([
   { path:'/',
@@ -71,11 +74,20 @@ const router = createBrowserRouter([
   },
   { path : 'orders', 
   element:<Orders/>
+  },
+  {
+    path:'payment',
+    element: <Payment />
+  },
+  {
+    path:'success',
+    element: <Success />
   }
+
 ]);
 
 
-function Container() {
+function Container(props) {
   return <RouterProvider router={ router }/>
 }
 
