@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import PrimaryHeader from './primaryheader'
 import SecondaryHeader from './secondaryheader';
 import { useDispatch } from 'react-redux';
+import style from './header.module.css'
 
 
 const Header = () => {
@@ -29,7 +30,7 @@ const Header = () => {
     updateProducts(searchTerm,category);
   };
   return (
-    <div className='header'>
+    <div className={style.header}>
         <PrimaryHeader searchTerm={searchTerm} setSearchTerm={setSearchTerm} searchSubmitHandler={searchSubmitHandler} clearSearchHandler={clearSearchHandler} />
         <SecondaryHeader checkByCategory={checkByCategory}></SecondaryHeader>
     </div>

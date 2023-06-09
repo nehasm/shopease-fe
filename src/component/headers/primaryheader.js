@@ -1,5 +1,5 @@
 import React from 'react';
-import './header.css';
+import style from './header.module.css';
 import icon from '../../assets/icon.png';
 import { FiSearch } from 'react-icons/fi';
 import { VscAccount} from 'react-icons/vsc';
@@ -18,37 +18,37 @@ const PrimaryHeader = (props) => {
     dispatch(logoutUser());
   };
   return (
-    <div className='common-header primary-header'>
-      <span className='logo'>
+    <div className={style["primary-header"]}>
+      <span className={style["logo"]}>
       <img  src={icon} alt='emall' />
       </span>
-      <span className='search'>
-      <form className="searchBox" onSubmit={props.searchSubmitHandler}>
+      <span className={style["search"]}>
+      <form className={style["searchBox"]} onSubmit={props.searchSubmitHandler}>
         <input
           type="text"
-          className='search-input'
+          className={style["search-input"]}
           placeholder="Search a product"
           onChange={(e) => props.setSearchTerm(e.target.value)}
           value={props.searchTerm}
         />
         <button type='submit'>
-          <span className='search-icon'>
-          {props.searchTerm && <RxCross2  onClick={props.clearSearchHandler} className='cross-icon'/>}
+          <span className={style["search-icon"]}>
+          {props.searchTerm && <RxCross2  onClick={props.clearSearchHandler} className={style["cross-icon"]}/>}
           < FiSearch   />
           </span>
         </button>
       </form>
       </span>
-      <div className='right-section-main'>
-      <span className='hamburger'> <GiHamburgerMenu />
+      <div className={style["right-section-main"]}>
+      <span className={style["hamburger"]}> <GiHamburgerMenu />
         </span>    
-        <div className='right-section'>
-          <div className='account-main'>
+        <div className={style["right-section"]}>
+          <div className={style["account-main"]}>
             <span> 
               <VscAccount /> 
               <p> My Account </p>
             </span>
-          <div className='account-dd'>
+          <div className={style["account-dd"]}>
             <div><Link to={`/login`}>SignIn/SignUP</Link></div>
             <div><Link to={`/profile`}>My Profile</Link></div>
             <div><Link to={'/orders'}>My Orders</Link></div>
