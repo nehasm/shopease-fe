@@ -1,42 +1,42 @@
 export const ProductCategories = [
     {
-        name:'Clothes',
+        text:'Clothes',
         value:'clothes'
     },
     {
-        name:'Footwear',
+        text:'Footwear',
         value:'footwear'
     },
     {
-        name:'Bags',
+        text:'Bags',
         value:'bags'
     },
     {
-        name:' Accessories',
+        text:' Accessories',
         value:' accessories'
     },
     {
-        name:'Home & living',
+        text:'Home & living',
         value:'homeliving'
     },
     {
-        name:'Groceries',
+        text:'Groceries',
         value:'groceries'
     },
     {
-        name:'Books',
+        text:'Books',
         value:'books'
     },
     {
-        name:'Electronics',
+        text:'Electronics',
         value:'electronics'
     },
     {
-        name:'Cosmetics & beauty',
+        text:'Cosmetics & beauty',
         value:'cosmeticsbeauty'
     },
     {
-        name:'Health care',
+        text:'Health care',
         value:'healthcare'
     }
 ]
@@ -190,5 +190,54 @@ export const ratingsDisplayList = [
         'reviewCount': 0,
         'reviewPercentage':0,
         'rating':5
+    },
+]
+{/* <div><Link to={`/login`}>SignIn/SignUP</Link></div>
+            <div><Link to={`/profile`}>My Profile</Link></div>
+            <div><Link to={'/orders'}>My Orders</Link></div>
+            <div><Link to={'/wishlist'}>My WishList</Link></div>
+            <div>Offers/Rewards</div>
+            <div onClick={logoutUserHandler}>Logout</div> */}
+export const UserNav = [
+    {
+        text : 'My Account',
+        options : [
+            {
+                text: 'SignIn/SignUp',
+                path: '/login'
+            },
+            {
+                text: 'My Profile',
+                path: '/profile'
+            },
+            {
+                text: 'My Orders',
+                path: '/orders'
+            },
+            {
+                text: 'My WishList',
+                path: '/wishlist'
+            },
+            {
+                text: 'Offers/Rewards',
+                path: '/offers'
+            },
+            {
+                text: 'Logout'
+            },
+        ]
+    },
+    {
+        text : 'Wishlist',
+        path: '/wishlist'
+    },
+    {
+        text : 'Cart',
+        path: '/cart'
+    },
+]
+const categoryNav = [
+    {
+        text: 'Logout'
     },
 ]

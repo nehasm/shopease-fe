@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import style from './header.module.css';
 import icon from '../../assets/icon.png';
 import { FiSearch } from 'react-icons/fi';
@@ -9,14 +9,20 @@ import { RxCross2 } from 'react-icons/rx'
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from '../../service/user';
+import Headernav from '../common/sidenav/headernav';
+import {UserNav} from '../../constant';
 
 const PrimaryHeader = (props) => {
   const dispatch = useDispatch();
+  const [openSideNav, setOpenSideNav] = useState(false)
   const {cart} = useSelector(state => state.cart);
   const cartLength = cart.cartItems ? cart.cartItems.length : 0 ;
   const logoutUserHandler = () => {
     dispatch(logoutUser());
   };
+  const closeSideNavHandler = () => {
+    setOpenSideNav(false);
+  }
   return (
     <div className={style["primary-header"]}>
       <span className={style["logo"]}>
@@ -40,8 +46,9 @@ const PrimaryHeader = (props) => {
       </form>
       </span>
       <div className={style["right-section-main"]}>
-      <span className={style["hamburger"]}> <GiHamburgerMenu />
-        </span>    
+      <span onClick={()=>setOpenSideNav(true)} className={style["hamburger"]}> <GiHamburgerMenu />
+        </span> 
+        {openSideNav ? <Headernav data={UserNav} headerType={"account"} closeSideNavHandler={closeSideNavHandler}/> : 
         <div className={style["right-section"]}>
           <div className={style["account-main"]}>
             <span> 
@@ -67,6 +74,7 @@ const PrimaryHeader = (props) => {
           </div>
           <div><span><Link to={'/cart'}> {cartLength && <span>{cartLength}</span>} <AiOutlineShoppingCart/> <p> Cart </p></Link></span></div>
         </div>
+        }
       </div>
     </div>
   )
