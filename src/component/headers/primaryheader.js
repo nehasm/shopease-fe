@@ -72,7 +72,7 @@ const PrimaryHeader = (props) => {
               </Link>
             </span> 
           </div>
-          <div><span><Link to={'/cart'}> {cartLength && <span>{cartLength}</span>} <AiOutlineShoppingCart/> <p> Cart </p></Link></span></div>
+          <div><span><Link to={'/cart'}> <AiOutlineShoppingCart/> <p> Cart </p></Link></span>{cartLength > 0 && <span className={style.cartcounttt}>{cartLength}</span>} </div>
         </div>
         }
       </div>

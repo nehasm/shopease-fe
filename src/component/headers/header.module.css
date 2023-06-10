@@ -172,6 +172,16 @@
 .category-dd-main > div:first-child:hover > .categorytooltip  {
     display: inline;
 }
+.cartcounttt {
+    top: -10%;
+    right: -6%;
+    position: absolute;
+    background: #0079bf;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    color: #fff;
+}
 
 @media only screen and (max-width: 800px) {
     .hamburger {
