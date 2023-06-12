@@ -1,5 +1,6 @@
 import React from 'react';
 import useInput from '../../hooks/useinput';
+import style from './login.module.css'
 
 const SignUpForm = (props) => {
     const {value:name,valueIsValid:nameIsValid ,hasError:nameHasError,valueChangeHandler:nameChangeHandler,inputBlurHandler:nameBlurHandler,reset:nameReset} = useInput('is_not_empty');
@@ -20,24 +21,27 @@ const SignUpForm = (props) => {
         passwordReset();
         nameReset();
     }
-  return    <div>
+  return    <div className={style.loginform}>
                 <form onSubmit={signUpHandler}>
-                    <div>
-                        <label>Name</label>
+                    <div className={style["form-group"]}>
+                        <label>Name *</label>
                         <input type='text' value={name} onChange={nameChangeHandler} onBlur={nameBlurHandler}/>
                         {nameHasError && <p>Please enter your name.</p>}
                     </div>
-                    <div>
-                        <label>Email</label>
+                    <div className={style["form-group"]}>
+                        <label>Email *</label>
                         <input type='email' value={email} onChange={emailChangeHandler} onBlur={emailBlurHandler}/>
                         {emailHasError && <p>Please enter a valid email address.</p>}
                     </div>
-                    <div>
-                        <label>Password</label>
+                    <div className={style["form-group"]}>
+                        <label>Password *</label>
                         <input type='password' value={password} onChange={passwordChangeHandler} onBlur={passwordBlurHandler}/>
                         {passwordHasError && <p>Password cannot be less than 8 characters.</p>}
-                    </div>
+                    </div >
+                    <div className={style["form-group"]}>
                     <button disabled={!formIsValid} type='submit'>Sign Up</button>
+                    </div>
+                    
                 </form>
             </div>
 }

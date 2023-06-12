@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import useInput from '../../hooks/useinput';
 import { useDispatch } from 'react-redux';
 import { forgotPassword } from '../../service/user'
+import style from './login.module.css';
 
 const ForgotPasswordForm = (props) => {
     const [message,setMessage] = useState("");
@@ -14,18 +15,22 @@ const ForgotPasswordForm = (props) => {
             setMessage("Please check your mail. We have sent you a reset password link.")
         }
     }
-  return <div className='login-main'>
+  return  <div className={style['login-main']}>
+    <div>
+  <div className={style.loginform}>
       <form onSubmit={continueForgotPassword}>
-      <div>
-          <label>Email</label>
+      <div className={style["form-group"]}>
+          <label>Email *</label>
           <input type='email' value={email} onChange={emailChangeHandler} onBlur={emailBlurHandler}/>
           {emailHasError && <p>Please enter a valid email address.</p>}
       </div>
-      <div>
+      <div className={style["form-group"]}>
       <button disabled={!emailIsValid} type='submit'>Login</button>
       </div>
   </form>
     {message && <p>{message}</p>}
+  </div>
+  </div>
   </div>
 }
 
