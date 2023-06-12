@@ -3,9 +3,12 @@ import './footer.css';
 import { ProductCategories,EmallInfo ,customerPolicies} from '../../constant';
 import { BsTwitter } from 'react-icons/bs';
 import { FaFacebookSquare } from 'react-icons/fa'
-import { GrInstagram } from 'react-icons/gr'
+import { GrInstagram } from 'react-icons/gr';
 
-const Footer = () => {
+const Footer = (props) => {
+  const sendCategory = (val) => {
+    props.checkByCategory(val)
+  }
   return (
     <div className='footer-main'>
   <div className="container footer">
@@ -13,7 +16,7 @@ const Footer = () => {
       <div className="col-md-3">
         <h3>Categories</h3>
         <ul>
-        {ProductCategories.map(product => <li key={product.valuegg}>{product.name}</li>)}
+        {ProductCategories.map(product => <li key={product.value} onClick={() => sendCategory(product.value)}>{product.text}</li>)}
         </ul>
       </div>
       <div className="col-md-3">
