@@ -138,3 +138,39 @@
     font-style: italic;
     padding: 0px 8px;
 }
+.wishlistitem {
+    margin: 32px;
+    width: 100%;
+}
+.cartmain.wishlistmain {
+    width: 70%;
+}
+.wishlistdesc {
+    flex: 1 1 0;
+}
+.wishlistcross > svg {
+    width: 20px;
+    height: 20px;
+    fill: #000;
+}
+@media only screen and (max-width: 1000px) {
+    .cartmain {
+        display: grid;
+    }
+    .cartitemsmain {
+        border-right: none;
+    }
+    .cartitemsmain {
+        width: 100%;
+    }
+    .cartamountmain {
+        width: 100%;
+        margin: 0
+    }
+    .cartamountmaincard{
+        margin: 24px;
+    }
+    .deliverytext {
+        padding: 0px 24px;
+    }
+}
