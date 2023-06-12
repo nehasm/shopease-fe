@@ -1,0 +1,140 @@
+.cartmain {
+    width: 80%;
+    margin: auto;
+    display: flex;
+}
+.cartitemsmain {
+    width: 65%;
+}
+.cartamountmain {
+    width: 30%;
+    margin: 0 auto;
+    margin: 30px
+}
+.cartheader {
+    height: 60px;
+    border-bottom: 1px solid #CFD7DF;
+    padding: 12px 42px;
+}
+.cartheader > span > img {
+    height: 38px;
+    text-align: center;
+}
+.cartheader > svg {
+    width: 24px;
+    height: 24px;
+    fill: #0079bf;
+    vertical-align: -webkit-baseline-middle;
+}
+.cartheader > span {
+    float: right;
+}
+.cartitemsmain {
+    border-right: 1px solid #CFD7DF;
+    display: flex;
+    flex-direction: column;
+
+}
+.cartitemsmain > div {
+    margin: 24px;
+}
+.product-card-img {
+    width: 180px;
+    height: 180px;
+    display: block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.cartitem {
+    padding: 16px;
+    border: 1px solid #CFD7DF;
+    border-radius: 4px;
+    display: flex;
+}
+.cartitem > .productimg {
+    margin-right: 16px;
+}
+.cartitemtitle{
+    font-size: 16px;
+    color: #565656;
+    font-weight: 600;
+}
+.price-without-discount-text {
+    text-decoration: line-through;
+    color: #7b8e9f;
+}
+.cartitemprice {
+    padding: 12px 0px;
+}
+.cartquantity {
+    padding-bottom: 12px;
+}
+.cartquantity > button {
+    background: #fff;
+    padding: 2px 8px;
+    border: 1px solid #CFD7DF;
+}
+.cartquantity > span {
+    padding: 0px 12px;
+}
+.removebtn > button {
+    background: #fff;
+    padding: 8px 16px;
+    border: 1px solid #000;
+}
+.removebtn > button:first-child {
+    margin-right: 16px;
+}
+.removebtn > button {
+    color: #0079bf;
+}
+.removebtn > button:hover {
+    font-weight: bold;
+    border: 1.5px solid #0079bf;
+    color: #0079bf;
+}
+.cartamountmaincard {
+    padding: 12px;
+    height: fit-content;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+}
+.pricedetails {
+    height: 60px;
+    padding: 16px 24px;
+    color: #565656;
+    font-weight: 500;
+    font-size: 16px;
+}
+.pricechart > div {
+    padding: 16px 24px;
+}
+.pricechart > div > span:last-child {
+    float: right;
+}
+.pricechart > div:last-child {
+    border-top: 1px solid #CFD7DF;
+}
+.linethrough {
+    text-decoration: line-through;
+}
+.textcolorlink {
+    color: #0079bf;
+}
+.placeorderbtn {
+    display: block;
+    background: #298fca;
+    margin: 16px 24px;
+    color: #fff;
+}
+.placeorderbtn > div {
+    padding: 16px;
+    border-radius: 4px;
+    font-size: 16px;
+    text-align: center;
+}
+.deliverytext {
+    font-size: 12px;
+    font-style: italic;
+    padding: 0px 8px;
+}
