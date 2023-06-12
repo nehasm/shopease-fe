@@ -14,7 +14,8 @@ import {UserNav} from '../../constant';
 
 const PrimaryHeader = (props) => {
   const dispatch = useDispatch();
-  const [openSideNav, setOpenSideNav] = useState(false)
+  const [openSideNav, setOpenSideNav] = useState(false);
+  const {user} = useSelector(state => state.user);
   const {cart} = useSelector(state => state.cart);
   const cartLength = cart.cartItems ? cart.cartItems.length : 0 ;
   const logoutUserHandler = () => {
@@ -56,12 +57,13 @@ const PrimaryHeader = (props) => {
               <p> My Account </p>
             </span>
           <div className={style["account-dd"]}>
-            <div><Link to={`/login`}>SignIn/SignUP</Link></div>
-            <div><Link to={`/profile`}>My Profile</Link></div>
+            {user ? <span><div><Link to={`/profile`}>My Profile</Link></div>
             <div><Link to={'/orders'}>My Orders</Link></div>
             <div><Link to={'/wishlist'}>My WishList</Link></div>
             <div>Offers/Rewards</div>
-            <div onClick={logoutUserHandler}>Logout</div>
+            <div onClick={logoutUserHandler}>Logout</div></span>:  <span><div><Link to={`/login`}>SignIn/SignUP</Link></div></span>}
+            
+            
           </div>
           </div>
           <div>
