@@ -71,9 +71,6 @@
 .form-group.addbtndisable button {
     background: #7b8e9f;
 }
-.form-group button:hover {
-    background: #0079bf;
-}
 .forgotpassword {
     color: #298fca;
 }

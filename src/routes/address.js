@@ -33,6 +33,16 @@ const Address = () => {
         2000
       </span>
     </div>
+    {allowPayment && 
+    <div>
+      <span>
+        Delivery charges
+      </span>
+      <span>
+        99
+      </span>
+    </div>
+    }
     <div>
       <span>
         Convienece fee
@@ -54,8 +64,8 @@ const Address = () => {
   <div>Make Payment</div>
   </div>
   </div>
+  {!allowPayment && <div className={style.deliverytext}>Please add your address to know the final amount including delivery charges.</div>}
   </div>
-  
 </div>
 }
 
