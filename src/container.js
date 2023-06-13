@@ -17,6 +17,8 @@ import WishList from './routes/wishlist';
 import Orders from './routes/orders';
 import Payment from './routes/payment';
 import Success from './routes/success';
+import Address from './routes/address';
+import CheckoutWrapper from './component/cart/checkoutwrapper';
 
 
 const router = createBrowserRouter([
@@ -66,18 +68,28 @@ const router = createBrowserRouter([
     element: <Cart/>
   },
   {
+    path: 'checkout',
+    element: <CheckoutWrapper />,
+    children: [
+      { path : 'summary', 
+      element: <Checkout/>
+      },
+      {
+        path:'address',
+        element: <Address />
+      },
+      {
+        path:'payment',
+        element: <Payment />
+      },
+    ]
+  },
+  {
     path: "wishlist",
     element: <WishList/>
   },
-  { path : 'checkout', 
-  element:<Checkout/>
-  },
   { path : 'orders', 
   element:<Orders/>
-  },
-  {
-    path:'payment',
-    element: <Payment />
   },
   {
     path:'success',

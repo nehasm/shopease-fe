@@ -45,7 +45,7 @@ const ProductDetails = (props) => {
                 "image":props.product.images[0].url
             }
         ]
-        return navigate('/checkout',{state:{orderItems}})
+        return navigate('/checkout/summary',{state:{orderItems}})
     }
     const addToWishlist = () => {
         let productData = {

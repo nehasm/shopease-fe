@@ -20,7 +20,7 @@ const Cart = () => {
     return dispatch(updateCartItemQunatity(productId,cart._id,updateQunatity))
   }
   const placeOrderHandler = () => {
-    return navigate('/checkout',{state:{orderItems:cart.cartItems}});
+    return navigate('/checkout/summary',{state:{orderItems:cart.cartItems}});
     
   }
   const moveToHomePage = () => {

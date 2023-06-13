@@ -57,7 +57,7 @@ const PrimaryHeader = (props) => {
               <p> My Account </p>
             </span>
           <div className={style["account-dd"]}>
-            {user ? <span><div><Link to={`/profile`}>My Profile</Link></div>
+            {Object.keys(user).length > 0 ? <span><div><Link to={`/profile`}>My Profile</Link></div>
             <div><Link to={'/orders'}>My Orders</Link></div>
             <div><Link to={'/wishlist'}>My WishList</Link></div>
             <div>Offers/Rewards</div>
