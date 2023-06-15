@@ -17,11 +17,11 @@ const CheckoutWrapper = () => {
   return <div>
     <div className={style.checkoutheader}>
         <span className={style.checkoutswitch}>
-            <span onClick={() => changeTab('summary')} className={`${style.checkouttext} ${summaryActiveClass}`}>Order Summary</span> 
+            <span  className={`${style.checkouttext} ${summaryActiveClass}`}>Order Summary</span> 
             <span> ------------------- </span>
-            <span onClick={() => changeTab('address')} className={`${style.checkouttext} ${addressActiveClass}`}>Address</span>
+            <span className={`${style.checkouttext} ${addressActiveClass}`}>Address</span>
             <span> ------------------- </span>
-            <span onClick={() => changeTab('payment')} className={`${style.checkouttext} ${paymentActiveClass}`}>Payment</span>
+            <span className={`${style.checkouttext} ${paymentActiveClass}`}>Payment</span>
         </span>
       <span  className={style["product-icon"]}>
       <img  src={icon} alt='emall' />

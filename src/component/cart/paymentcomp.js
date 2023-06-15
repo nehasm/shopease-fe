@@ -7,6 +7,7 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 import { useNavigate } from "react-router-dom";
+import style from '../cart/order.module.css'
 
 import axios from "axios";
 
@@ -90,30 +91,31 @@ const Paymentcomp = () => {
   };
 
   return (
-    <Fragment>
+    <div className={style.paymentmain}>
       {error !== "" ? <p>{error}</p> : 
-      <div className="paymentContainer">
-        <form className="paymentForm" onSubmit={(e) => submitHandler(e)}>
-          <div>
-            <CardNumberElement className="paymentInput" />
+      <div className={style.paymentcontainer}>
+        <form className={style.paymentForm} onSubmit={(e) => submitHandler(e)}>
+          <div className={style.paymentinput}>
+            <CardNumberElement  />
           </div>
-          <div>
-            <CardExpiryElement className="paymentInput" />
+          <div className={style.paymentinput}>
+            <CardExpiryElement  />
           </div>
-          <div>
-            <CardCvcElement className="paymentInput" />
+          <div className={style.paymentinput}>
+            <CardCvcElement  />
           </div>
-
+          <div className={style["text-align-center"]}>
           <input
             type="submit"
             value={`Pay - ₹$30000`}
             ref={payBtn}
-            className="paymentFormBtn"
+            className={style.paymentinputbtn}
           />
+          </div>
         </form>
       </div>
       }
-    </Fragment>
+    </div>
   );
 };
 

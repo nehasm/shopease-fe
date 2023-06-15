@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
 import style from '../component/cart/order.module.css'
 import Addressform from '../component/cart/addressform';
+import { useOutletContext } from "react-router-dom";
 
 const Address = () => {
     const [allowPayment,setAllowPayment] = useState(false);
+    const [changeTab] = useOutletContext()
     let paymentBtnClass = allowPayment ? "" : style.makepaymentbtndisable;
     const isAddressValidAdded = (data) => {
         setAllowPayment(true);
         console.log(data)
+    }
+    const proceedPayment  = () => {
+      changeTab('payment');
     }
   return <div className={style.cartmain}>
   <div className={style.cartitemsmain}>
@@ -56,11 +61,11 @@ const Address = () => {
       Total Amount
       </span>
       <span>
-        2000
+        2099
       </span>
     </div>
   </div>
-  <div className={`${style.placeorderbtn} ${paymentBtnClass}`}>
+  <div onClick={proceedPayment} className={`${style.placeorderbtn} ${paymentBtnClass}`}>
   <div>Make Payment</div>
   </div>
   </div>

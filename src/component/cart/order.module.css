@@ -180,6 +180,28 @@
 .addressform {
     padding: 56px;
 }
+.paymentcontainer {
+    padding: 30px;
+    width: 60%;
+    margin: auto;
+}
+.paymentinput  {
+    padding: 16px;
+    border: 1px solid #CFD7DF;
+    border-radius: 4px;
+    margin: 24px;
+}
+.paymentinputbtn {
+    padding: 16px;
+    background: #298fca;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    margin: 24px;
+}
+.text-align-center {
+    text-align: center;
+}
 @media only screen and (max-width: 1000px) {
     .cartmain {
         display: grid;
@@ -199,5 +221,8 @@
     }
     .deliverytext {
         padding: 0px 24px;
+    }
+    .paymentcontainer {
+        width: 100%;
     }
 }
