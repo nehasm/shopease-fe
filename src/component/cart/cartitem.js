@@ -27,7 +27,7 @@ const CartItem = (props) => {
     const moveToWishlist = () => {
         
     }
-    const priceWithNoDiscount = 500;
+    const priceWithNoDiscount = Math.round(props.cartItem.discount ? props.cartItem.price * 100 / (100 - props.cartItem.discount) : props.cartItem.price);
     const discount = 80;
   return <div className={style.cartitem}>
     <div className={style.productimg}>
@@ -38,7 +38,7 @@ const CartItem = (props) => {
         <div >
             <span className={style.cartitemtitle}>{props.cartItem.name}</span>
         <div className={style.cartitemprice}>
-        <span>{`₹${props.cartItem.price}`} <span className={style["price-without-discount-text"]}>{`₹${priceWithNoDiscount}`}</span> {`(${discount}%)`}</span>
+        <span>{`₹${props.cartItem.price}`} <span className={style["price-without-discount-text"]}>{`₹${priceWithNoDiscount}`}</span> {`(${props.cartItem.discount}%)`}</span>
         </div>
         <div className={style.cartquantity}>
             <button onClick={decreaseQuantity}>-</button>

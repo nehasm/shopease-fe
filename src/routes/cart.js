@@ -1,7 +1,7 @@
-import React from 'react'
+import React ,{useMemo} from 'react'
 import { useSelector } from 'react-redux';
 import CartItem from '../component/cart/cartitem';
-import { removeItemFromCart,updateCartItemQunatity } from '../service/cart';
+import { removeItemFromCart,updateCartItemQunatity,priceCalculation } from '../service/cart';
 import { useDispatch } from 'react-redux';
 import Loader from '../component/common/loader';
 import { useNavigate } from 'react-router-dom';
@@ -13,6 +13,7 @@ const Cart = () => {
   const {cart,loading,error} = useSelector(state=>state.cart);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const priceObj = useMemo(()=>priceCalculation(cart.cartItems),[cart.cartItems]);
   const removeProductFromCart = (productId) => {
     return dispatch(removeItemFromCart(productId,cart._id))
   }
@@ -50,7 +51,7 @@ const Cart = () => {
             Total MRP
           </span>
           <span>
-            4000
+            {priceObj.totalMrp}
           </span>
         </div>
         <div>
@@ -58,7 +59,7 @@ const Cart = () => {
             Discount on MRP
           </span>
           <span>
-            2000
+            {priceObj.totalDiscountOnMrp}
           </span>
         </div>
         <div>
@@ -74,7 +75,7 @@ const Cart = () => {
           Total Amount
           </span>
           <span>
-            2000
+            {priceObj.totalAmount}
           </span>
         </div>
       </div>

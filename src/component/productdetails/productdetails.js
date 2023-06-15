@@ -30,7 +30,8 @@ const ProductDetails = (props) => {
             name : props.product.name,
             price: props.product.price,
             image:props.product.images[0].url,
-            quantity:1
+            quantity:1,
+            discount:props.product.discount,
         }
         navigate('/cart');
         return props.addItemInCartHandler(props.product._id,productData);

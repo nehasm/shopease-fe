@@ -2,17 +2,30 @@ import React, { useState } from 'react';
 import style from '../component/cart/order.module.css'
 import Addressform from '../component/cart/addressform';
 import { useOutletContext } from "react-router-dom";
+import { useLocation } from 'react-router-dom';
 
 const Address = () => {
     const [allowPayment,setAllowPayment] = useState(false);
+    const [shippingInfo,setShippingInfo] = useState({})
     const [changeTab] = useOutletContext()
+    const history = useLocation();
+    const orderItems = history.state.orderItems;
+    const priceData = history.state.priceData;
     let paymentBtnClass = allowPayment ? "" : style.makepaymentbtndisable;
     const isAddressValidAdded = (data) => {
         setAllowPayment(true);
-        console.log(data)
+        setShippingInfo({
+          address: data.address,
+          city:data.city,
+          state:data.state,
+          country:data.country,
+          pinCode:data.pincode,
+          phoneNo:data.phone
+      });
     }
     const proceedPayment  = () => {
-      changeTab('payment');
+      let orderData = {orderItems,shippingInfo};
+      changeTab('payment',orderData,priceData);
     }
   return <div className={style.cartmain}>
   <div className={style.cartitemsmain}>
@@ -27,7 +40,7 @@ const Address = () => {
         Total MRP
       </span>
       <span>
-        4000
+        {priceData.totalMrp}
       </span>
     </div>
     <div>
@@ -35,7 +48,7 @@ const Address = () => {
         Discount on MRP
       </span>
       <span>
-        2000
+      {priceData.totalDiscountOnMrp}
       </span>
     </div>
     {allowPayment && 
@@ -61,7 +74,7 @@ const Address = () => {
       Total Amount
       </span>
       <span>
-        2099
+      {priceData.totalAmount}
       </span>
     </div>
   </div>

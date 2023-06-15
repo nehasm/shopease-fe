@@ -1,19 +1,22 @@
-import React, { useState } from 'react'
+import React, { useState ,useMemo} from 'react'
 import { useLocation } from 'react-router-dom'
 import CartItem from '../component/cart/cartitem'
 import style from '../component/cart/order.module.css';
 import { useOutletContext } from "react-router-dom";
+import { priceCalculation } from '../service/cart';
 
 const Checkout = () => {
   const history = useLocation();
   const [allowPayment,setAllowPayment] = useState(false);
   const [changeTab] = useOutletContext()
   const [orderItems,setOrderItems] = useState(history.state.orderItems);
+  const priceObj = useMemo(()=>priceCalculation(orderItems),[orderItems]);
   const updateQunatity = (productId,quantity) => {
     const updatedOrderItems = orderItems.map(product=>{
       if(product.product.toString() === productId.toString()) {
         return { ...product,quantity:quantity.newQuantity}
       }
+      return product;
     })
     setOrderItems(updatedOrderItems);
   }
@@ -22,7 +25,7 @@ const Checkout = () => {
     setOrderItems(updatedOrderItems);
   }
   const placeOrderHandler = () => {
-    changeTab('address');
+    changeTab('address',orderItems,priceObj);
   }
   return     <div className={style.cartmain}>
   <div className={style.cartitemsmain}>
@@ -37,7 +40,7 @@ const Checkout = () => {
         Total MRP
       </span>
       <span>
-        4000
+      {priceObj.totalMrp}
       </span>
     </div>
     <div>
@@ -45,7 +48,7 @@ const Checkout = () => {
         Discount on MRP
       </span>
       <span>
-        2000
+        {priceObj.totalDiscountOnMrp}
       </span>
     </div>
     <div>
@@ -61,7 +64,7 @@ const Checkout = () => {
       Total Amount
       </span>
       <span>
-        2000
+      {priceObj.totalAmount}
       </span>
     </div>
   </div>

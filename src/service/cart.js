@@ -74,3 +74,22 @@ import axios from "axios";
         dispatch(cartAction.cartData(data));
     }
   };
+
+  export const priceCalculation = (cartItems) => {
+    const priceObj = {
+      totalMrp : 0,
+      totalDiscountOnMrp : 0,
+      totalAmount :0 
+    }
+    if(cartItems) {
+      cartItems.forEach(element => {
+        let totalPrice = element.quantity * element.price;
+        priceObj.totalAmount = priceObj.totalAmount + totalPrice;
+        let priceWithNoDiscount = Math.round(element.discount ? totalPrice * 100 / (100 - element.discount) : totalPrice);
+        priceObj.totalMrp = priceObj.totalMrp + priceWithNoDiscount;
+        priceObj.totalDiscountOnMrp = priceObj.totalDiscountOnMrp + (priceWithNoDiscount - totalPrice);
+      });
+    }
+
+    return priceObj;
+  }
