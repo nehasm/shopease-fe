@@ -51,11 +51,11 @@ const [disable,setDisable] = useState(false);
           <input type='text' disabled value={`India`} onChange={stateChangeHandler} onBlur={stateBlurHandler}/>
       </div >
       <div className={fromstyle["form-group"]}>
-          <input disabled={disable} type='text' value={pincode}  placeholder='Enter your pincode *' onChange={pincodeChangeHandler} onBlur={pincodeBlurHandler}/>
+          <input disabled={disable} type='number' value={pincode}  placeholder='Enter your pincode *' onChange={pincodeChangeHandler} onBlur={pincodeBlurHandler}/>
           {pincodeHasError && <p>Please enter a valid pincode number.</p>}
       </div >
       <div className={fromstyle["form-group"]}>
-          <input disabled={disable} type='text' value={phone} placeholder='Enter your phone number *' onChange={phoneChangeHandler} onBlur={phoneBlurHandler}/>
+          <input disabled={disable} type='number' value={phone} placeholder='Enter your phone number *' onChange={phoneChangeHandler} onBlur={phoneBlurHandler}/>
           {phoneHasError && <p>Please enter a valid phone number.</p>}
       </div >
       <div className={`${fromstyle["form-group"]} ${addressbtnClass}`}>
