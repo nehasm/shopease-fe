@@ -10,6 +10,7 @@ const Checkout = () => {
   const [allowPayment,setAllowPayment] = useState(false);
   const [changeTab] = useOutletContext()
   const [orderItems,setOrderItems] = useState(history.state.orderItems);
+  const cartId = history.state.cartId;
   const priceObj = useMemo(()=>priceCalculation(orderItems),[orderItems]);
   const updateQunatity = (productId,quantity) => {
     const updatedOrderItems = orderItems.map(product=>{
@@ -25,7 +26,7 @@ const Checkout = () => {
     setOrderItems(updatedOrderItems);
   }
   const placeOrderHandler = () => {
-    changeTab('address',orderItems,priceObj);
+    changeTab('address',orderItems,priceObj,cartId);
   }
   return     <div className={style.cartmain}>
   <div className={style.cartitemsmain}>

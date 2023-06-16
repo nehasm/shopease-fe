@@ -10,6 +10,7 @@ const Address = () => {
     const [changeTab] = useOutletContext()
     const history = useLocation();
     const orderItems = history.state.orderItems;
+    const cartId = history.state.cartId;
     let priceData = history.state.priceData;
     let shippingPrice = 99;
     priceData.shippingPrice = 99;
@@ -27,7 +28,7 @@ const Address = () => {
     }
     const proceedPayment  = () => {
       let orderData = {orderItems,shippingInfo};
-      changeTab('payment',orderData,priceData);
+      changeTab('payment',orderData,priceData,cartId);
     }
   return <div className={style.cartmain}>
   <div className={style.cartitemsmain}>

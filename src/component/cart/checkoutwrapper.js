@@ -10,14 +10,14 @@ const CheckoutWrapper = () => {
     const summaryActiveClass = tab === "summary" ? style["chekout-active-tab"] : "";
     const addressActiveClass = tab === "address" ? style["chekout-active-tab"] : "";
     const paymentActiveClass = tab === "payment" ? style["chekout-active-tab"] : "";
-    const changeTab = (val,data,priceObj) => {
+    const changeTab = (val,data,priceObj,id) => {
         setTab(val);
         switch(val){
           case "address":
-            navigate(`/checkout/${val}`,{state:{orderItems:data,priceData:priceObj}});
+            navigate(`/checkout/${val}`,{state:{orderItems:data,priceData:priceObj,cartId:id}});
             break;
           case "payment":
-            navigate(`/checkout/${val}`,{state:{orderData:data,priceData:priceObj}});
+            navigate(`/checkout/${val}`,{state:{orderData:data,priceData:priceObj,cartId:id}});
             break;
         }
         

@@ -56,6 +56,22 @@ import axios from "axios";
     }
   };
 
+  export const clearCart = (cartId) => async (dispatch) => {
+    try {
+      const { data } = await axios.delete(
+        `/api/v1/cart/clear?cartId=${cartId}`
+      );
+      data.error = {}
+      dispatch(cartAction.cartData(data));
+    } catch (error) {
+        let data = {
+            user : {},
+            error 
+        }
+        dispatch(cartAction.cartData(data));
+    }
+  };
+
   export const updateCartItemQunatity = (productId,cartId,quantity) => async (dispatch) => {
     try {
       const config = { headers: { "Content-Type": "application/json" } };

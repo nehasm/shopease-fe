@@ -7,16 +7,21 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 import { useNavigate } from "react-router-dom";
-import style from '../cart/order.module.css'
+import style from '../cart/order.module.css';
+import { useDispatch } from "react-redux";
 
 import axios from "axios";
+import { clearCart } from "../../service/cart";
+import Loader from "../common/loader";
 
 const Paymentcomp = (props) => {
   const stripe = useStripe();
   const [error,setError] = useState("");
+  const dispatch = useDispatch();
   const elements = useElements();
   const payBtn = useRef(null);
   const navigate = useNavigate();
+  let cardId = props.cartId;
   let orderRequestObj  = props.orderData;
   orderRequestObj.itemsPrice = props.priceData.totalAmount;
   orderRequestObj.shippingPrice = props.priceData.shippingPrice;
@@ -33,7 +38,10 @@ const Paymentcomp = (props) => {
         orderRequestObj,
         config
       );
-      navigate('/success')
+      if(cardId) {
+        dispatch(clearCart(cardId));
+      }
+      navigate('/success');
     } catch (error) {
       setError("Unable to place your order.Money will be refunded in your account if it is deducted. Sorry for the inconvience.")
     }
@@ -112,12 +120,15 @@ const Paymentcomp = (props) => {
             <CardCvcElement  />
           </div>
           <div className={style["text-align-center"]}>
-          <input
-            type="submit"
-            value={`Pay - ${orderRequestObj.totalPrice}`}
-            ref={payBtn}
-            className={style.paymentinputbtn}
-          />
+            {payBtn?.current?.disabled ? <Loader/> :
+                      <input
+                      type="submit"
+                      value={`Pay - ${orderRequestObj.totalPrice}`}
+                      ref={payBtn}
+                      className={style.paymentinputbtn}
+                    />
+            }
+
           </div>
         </form>
       </div>
