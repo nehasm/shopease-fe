@@ -16,7 +16,7 @@ const Payment = () => {
     },[])
 
   return (
-    <Elements stripe={loadStripe(stripeKey)}><Paymentcomp /></Elements>
+    <Elements stripe={loadStripe(stripeKey)}><Paymentcomp orderData={orderData} priceData={priceData}/></Elements>
   )
 }
 

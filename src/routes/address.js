@@ -10,7 +10,9 @@ const Address = () => {
     const [changeTab] = useOutletContext()
     const history = useLocation();
     const orderItems = history.state.orderItems;
-    const priceData = history.state.priceData;
+    let priceData = history.state.priceData;
+    let shippingPrice = 99;
+    priceData.shippingPrice = 99;
     let paymentBtnClass = allowPayment ? "" : style.makepaymentbtndisable;
     const isAddressValidAdded = (data) => {
         setAllowPayment(true);
@@ -57,7 +59,7 @@ const Address = () => {
         Delivery charges
       </span>
       <span>
-        99
+        {shippingPrice}
       </span>
     </div>
     }
@@ -74,7 +76,7 @@ const Address = () => {
       Total Amount
       </span>
       <span>
-      {priceData.totalAmount}
+        {allowPayment ? priceData.totalAmount + shippingPrice : priceData.totalAmount}
       </span>
     </div>
   </div>

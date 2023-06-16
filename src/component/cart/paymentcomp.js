@@ -11,19 +11,26 @@ import style from '../cart/order.module.css'
 
 import axios from "axios";
 
-const Paymentcomp = () => {
+const Paymentcomp = (props) => {
   const stripe = useStripe();
   const [error,setError] = useState("");
   const elements = useElements();
   const payBtn = useRef(null);
   const navigate = useNavigate();
-  const orderData = {}
-  const addOrder = async () => {
+  let orderRequestObj  = props.orderData;
+  orderRequestObj.itemsPrice = props.priceData.totalAmount;
+  orderRequestObj.shippingPrice = props.priceData.shippingPrice;
+  orderRequestObj.totalPrice = props.priceData.totalAmount + 99;
+  const addOrder = async (paymentIntent) => {
+    orderRequestObj.paymentInfo = {
+      id: paymentIntent.id,
+      status: paymentIntent.status
+    }
     try {
       const config = { headers: { "Content-Type": "application/json" } };
       const { data } = await axios.post(
         `/api/v1/order`,
-        orderData,
+        orderRequestObj,
         config
       );
       navigate('/success')
@@ -33,7 +40,7 @@ const Paymentcomp = () => {
     
   }
   const paymentData = {
-    amount: Math.round(333 * 100),
+    amount: Math.round(orderRequestObj.totalPrice),
   };
 
   const submitHandler = async (e) => {
@@ -79,7 +86,7 @@ const Paymentcomp = () => {
         setError("Unable to confirm your payment status. Money will be refunded in your account if it is deducted. Sorry for the inconvience.")
       } else {
         if (result.paymentIntent.status === "succeeded") {
-          addOrder()
+          addOrder(result.paymentIntent);
         } else {
           setError("There is some issue occur in your payment status. Money will be refunded in your account if it is deducted. Sorry for the inconvience.")
         }
@@ -107,7 +114,7 @@ const Paymentcomp = () => {
           <div className={style["text-align-center"]}>
           <input
             type="submit"
-            value={`Pay - ₹$30000`}
+            value={`Pay - ${orderRequestObj.totalPrice}`}
             ref={payBtn}
             className={style.paymentinputbtn}
           />
