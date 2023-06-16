@@ -1,9 +1,8 @@
 import React from 'react'
+import SuccessOrder from '../component/common/successorder/successorder'
 
 const Success = () => {
-  return (
-    <div>Success</div>
-  )
+  return <SuccessOrder />
 }
 
 export default Success

@@ -1,0 +1,31 @@
+.successcontainer {
+    width: 60%;
+    margin: auto;
+}
+.successmain{
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.tickicon {
+    margin: 30px;
+}
+.tickicon > svg {
+    height: 100px;
+    width: 100px;
+    fill: #0079bf;
+}
+.successtext{
+    font-size: 20px;
+    color:  #565656;
+    margin-bottom: 30px;
+}
+.successbtn > button {
+    padding: 16px;
+    border-radius: 4px;
+    background: #298fca;
+    color: #fff;
+}
