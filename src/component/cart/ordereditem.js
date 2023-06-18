@@ -4,7 +4,10 @@ import { AiFillStar } from 'react-icons/ai';
 
 
 const OrderedItem = (props) => {
-  const date = new Date(props.order.createdAt)
+  const date = new Date(props.order.createdAt);
+  const openReviewModal = (id) => {
+    return props.openModelHandler(id);
+  }
   return <>
     {props.order.orderItems.map(product => <div className={style.orderitem}>
           <div className={style.productimg}>
@@ -25,7 +28,7 @@ const OrderedItem = (props) => {
         </div>
         {
           props.order.orderStatus === "Delivered" &&
-          <div className={style.reviewproduct}>
+          <div onClick={(e) => openReviewModal(product.product)} className={style.reviewproduct}>
           <AiFillStar />  <span>Rate & Review Product</span>
         </div>
         }
