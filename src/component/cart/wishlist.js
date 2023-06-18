@@ -12,7 +12,7 @@ const Wishlist = (props) => {
   const moveToCart = () => {
       
   }
-  return <div className={style.cartitem}>
+  return <div className={`${style.cartitem} ${style.wishlistcartitem}`}>
   <div className={style.productimg}>
   <span className={style["product-card-img"]} style={{backgroundImage: `url(${props.product.image})`}}>
       </span>

@@ -54,6 +54,9 @@
 .cartitemsmain > div {
     margin: 24px;
 }
+.cartitem.wishlistcartitem {
+    margin-bottom: 24px;
+}
 .product-card-img {
     width: 180px;
     height: 180px;
