@@ -11,18 +11,15 @@ import {BsArrowLeft} from 'react-icons/bs';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import ReviewForm from '../component/products/reviewform';
+import { addReview } from '../service/products';
 
 
 const Orders = () => {
     const {orders,error,loading} = useSelector(state => state.order);
+    const [productId, setProductId] = useState("");
     const [openModal,setOpenModal] = useState(false);
     const handleClose = () => setOpenModal(false);
-    const submitReviewHandler = (data) => {
-      console.log(data)
-      handleClose();
-    }
     const dispatch = useDispatch();
-    let productId = "";
     const navigate = useNavigate();
     useEffect(()=>{
         dispatch(getAllOrders())
@@ -31,8 +28,14 @@ const Orders = () => {
       return navigate('/');
     }
     const openModelHandler = (id) => {
-      productId = id;
+      setProductId(id);
       setOpenModal(true);
+    }
+    const submitReviewHandler = (data) => {
+      data.productId = productId;
+      dispatch(addReview(data));
+      setProductId("");
+      handleClose();
     }
   return <>
   <div>

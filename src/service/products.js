@@ -40,3 +40,17 @@ export const getAllProducts =
         }
       }
   }
+
+  export const addReview = (reviewData) => async (dispatch) => {
+
+    try {
+      const config = { headers: { "Content-Type": "application/json" } };
+      const { data } = await axios.post(
+        `/api/v1/review`,
+        reviewData,
+        config
+      );
+    } catch (error) {
+      console.log(error)
+    }
+  };
