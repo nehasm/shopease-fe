@@ -54,3 +54,14 @@ export const getAllProducts =
       console.log(error)
     }
   };
+
+
+  export const deleteReview = (productId,reviewId) => async (dispatch) => {
+    try {
+      const { data } = await axios.delete(
+        `/api/v1/review?productId=${productId}&id=${reviewId}`
+      );
+    } catch (error) {
+      console.log(error)
+    }
+  };

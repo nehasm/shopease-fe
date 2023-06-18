@@ -1,29 +1,59 @@
 import React, { useEffect, useState } from 'react';
 import './productdetails.css';
-import { AiFillStar } from 'react-icons/ai';
+import { AiFillStar,AiOutlineHeart ,AiFillHeart} from 'react-icons/ai';
 import { BsFillCartFill } from 'react-icons/bs';
 import { HiArrowSmallRight } from 'react-icons/hi2'
-import { offerList, ratingsDisplayList } from '../../constant'
+import { offerList } from '../../constant'
 import { MdStars } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import {MdOutlineDeleteOutline} from 'react-icons/md'
  
+const ratingsDisplayList = [
+    {
+        'reviewCount': 0,
+        'reviewPercentage':0,
+        'rating':5
+    },
+    {
+        'reviewCount': 0,
+        'reviewPercentage':0,
+        'rating':4
+    },
+    {
+        'reviewCount': 0,
+        'reviewPercentage':0,
+        'rating':3
+    },
+    {
+        'reviewCount': 0,
+        'reviewPercentage':0,
+        'rating':2
+    },
+    {
+        'reviewCount': 0,
+        'reviewPercentage':0,
+        'rating':1
+    },
+]
 
 const ProductDetails = (props) => {
     const { price,discount } = props.product;
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const isProductPresentInWishlist = props.productPresentInWishlist ? true : false;
     const [isProductPresentInCart,setIsProductPresentInCart] = useState(false);
     const priceWithNoDiscount = Math.round(discount ? price * 100 / (100 - discount) : price);
     useEffect(()=>{
         if(props.cartData) {
             setIsProductPresentInCart(typeof(props.cartData.find(cart=>cart.product === props.product._id)) !== 'undefined') 
         }
+        props.product.reviews.map(element => {
+            let rating = Math.floor(element.rating);
+            let index = ratingsDisplayList.findIndex(val => val.rating === rating)
+            ratingsDisplayList[index].reviewCount++;
+        });
+        ratingsDisplayList.map(element => element.reviewPercentage = ( element.reviewCount/props.product.numOfReviews)*100)
     },[])
-    props.product.reviews.map(element => {
-        let rating = Math.floor(element.rating);
-        ratingsDisplayList[rating - 1].reviewCount++;
-    });
-    ratingsDisplayList.map(element => element.reviewPercentage = ( element.reviewCount/props.product.numOfReviews)*100)
     const date = new Date()
     const addItemInCart = () => {
         let productData = {
@@ -49,6 +79,10 @@ const ProductDetails = (props) => {
         return navigate('/checkout/summary',{state:{orderItems}})
     }
     const addToWishlist = () => {
+        if(isProductPresentInWishlist) {
+            navigate('/wishlist');
+            return
+        }
         let productData = {
             name : props.product.name,
             price: props.product.price,
@@ -58,12 +92,16 @@ const ProductDetails = (props) => {
         }
         return props.addItemInWishlistHandler(productData)
     }
+    const deleteReview = (id) => {
+        return props.deleteReviewHandler(props.product._id,id);
+    }
   return (
     <div className='product-detail-main'>
         <div className='product-imgs'>
         <span>{props.product.images.map(img => <span className='product-img-list' style={{backgroundImage: `url(${img.url})`}}></span>)}</span>
-            <img className="product-img" src={props.product.images[0].url} alt='Main product'/>
-            <button onClick={addToWishlist}>Add to wishlist</button>
+        <img className="product-img" src={props.product.images[0].url} alt='Main product'/>
+
+
         </div>
         <div className='product-text'>
             <h5 className='brand-name'>{props.product.brandName}</h5>
@@ -75,6 +113,7 @@ const ProductDetails = (props) => {
                 <span className='divider'>|</span>
                 <span>{props.product.numOfReviews}</span>
                 </span>
+                <span className="wishlist-btn" onClick={addToWishlist}>{isProductPresentInWishlist ? <AiFillHeart/> : <AiOutlineHeart />} <span>{isProductPresentInWishlist ? `Added to` : `Add to`}  Wishlist</span></span>
             </div>
             <div className='product-price-main'>
                 <h4 className='product-price'>{`₹${props.product.price}`}</h4>
@@ -118,7 +157,7 @@ const ProductDetails = (props) => {
                         <span>{props.product.numOfReviews} verified Buyers</span>
                     </div>
                     <div className='ratings-split'>
-                        {ratingsDisplayList.reverse().map(val => <span>{val.rating} <AiFillStar/> <span className='rating-progress'><span style={{width:`${val.reviewPercentage}px`}}></span></span>{val.reviewCount} </span> )}
+                        {ratingsDisplayList.map(val => <span>{val.rating} <AiFillStar/> <span className='rating-progress'><span style={{width:`${val.reviewPercentage}px`}}></span></span>{val.reviewCount} </span> )}
                     </div>
 
                 </div>
@@ -139,7 +178,9 @@ const ProductDetails = (props) => {
                         <span>{`${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`}</span>
                     </span>
                 </div>
-                </div>)}
+                {props?.userId ?.toString() === review?.user?.toString() && <span onClick={()=>deleteReview(review._id)} className="reviewdeletebtn"><MdOutlineDeleteOutline /></span>}
+                </div>
+                )}
 
             </div>
         </div>

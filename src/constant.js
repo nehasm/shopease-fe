@@ -165,33 +165,7 @@ export const offerList = [
         id:6
     }
 ]
-export const ratingsDisplayList = [
-    {
-        'reviewCount': 0,
-        'reviewPercentage':0,
-        'rating':1
-    },
-    {
-        'reviewCount': 0,
-        'reviewPercentage':0,
-        'rating':2
-    },
-    {
-        'reviewCount': 0,
-        'reviewPercentage':0,
-        'rating':3
-    },
-    {
-        'reviewCount': 0,
-        'reviewPercentage':0,
-        'rating':4
-    },
-    {
-        'reviewCount': 0,
-        'reviewPercentage':0,
-        'rating':5
-    },
-]
+
 {/* <div><Link to={`/login`}>SignIn/SignUP</Link></div>
             <div><Link to={`/profile`}>My Profile</Link></div>
             <div><Link to={'/orders'}>My Orders</Link></div>

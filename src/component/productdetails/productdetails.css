@@ -226,8 +226,25 @@
 .customer-reviews > div  > span:nth-child(2) {
     font-weight: 300;
 }
-.customer-reviews > div > div:nth-child(2) {
-
+.reviewdeletebtn {
+    margin-left: auto;
+}
+.reviewdeletebtn > svg {
+    width: 20px;
+    height: 20px;
+    fill: #565656
+}
+.wishlist-btn  > svg {
+    width: 24px;
+    height: 24px;
+    fill: #000;
+}
+.wishlist-btn {
+    border: 1px solid #CFD7DF;
+    padding: 8px;
+    margin-left: 12px;
+    border-radius: 2px;
+    color: #565656;
 }
 @media only screen and (max-width: 1050px) { 
     .product-imgs {
