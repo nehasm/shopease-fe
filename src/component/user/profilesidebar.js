@@ -1,16 +1,21 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React  from 'react'
+import style from './profile.module.css';
+import { useNavigate } from 'react-router-dom';
 
-const ProfileSideBar = () => {
-  return <div>
-    <div>
-        Profile
+const ProfileSideBar = (props) => {
+  const navigate = useNavigate();
+  const changeTab = (val) => {
+    navigate(val);
+  }
+  return <div className={style.profilenavmain}>
+    <div className={style.profiletab} onClick={()=>changeTab('/profile')}>
+    PROFILE
     </div>
-    <div>
-       <Link to={'/profile/edit'}>Edit Profile</Link> 
+    <div className={style.profiletab} onClick={()=>changeTab('/profile/edit')}>
+       EDIT PROFILE
     </div>
-    <div>
-        <Link to={'/profile/changepassword'}>Change Password</Link>
+    <div className={style.profiletab} onClick={()=>changeTab('/profile/changepassword')}>
+      CHANGE PASSWORD
     </div>
   </div>
 }

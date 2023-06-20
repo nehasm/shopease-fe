@@ -3,7 +3,9 @@ import useInput from '../../hooks/useinput';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { updateProfile} from '../../service/user'
+import { updateProfile} from '../../service/user';
+import fromstyle from '../account/login.module.css';
+import style from './profile.module.css'
 
 const EditProfile = () => {
 const { user,error,loading} = useSelector((state) => state.user);
@@ -24,20 +26,28 @@ const editProfileHandler = () => {
         navigate('/profile')
     }
 }
-  return <div>
+  return <div className={style.profilesectionman}>
+  <div className={style.tabHeading}>
+    <h2>EDIT PROFILE</h2>
+  </div>
+  <div className={`${fromstyle.loginform} ${style.tabmainarea}`}>
             <form onSubmit={editProfileHandler}>
-            <div>
+            <div className={fromstyle["form-group"]}>
                 <label>Name</label>
                 <input type='text' value={name} onChange={nameChangeHandler} onBlur={nameBlurHandler}/>
                 {nameHasError && <p>Please enter your name.</p>}
             </div>
-            <div>
+            <div className={fromstyle["form-group"]}>
                 <label>Email</label>
                 <input type='email' value={email} onChange={emailChangeHandler} onBlur={emailBlurHandler}/>
                 {emailHasError && <p>Please enter a valid email address.</p>}
             </div>
+            <div className={fromstyle["form-group"]}>
             <button disabled={!formIsValid} type='submit'>Edit Profile</button>
+            </div>
+            
         </form>
+  </div>
   </div>
 }
 
