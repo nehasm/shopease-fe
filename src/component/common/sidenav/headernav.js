@@ -37,7 +37,7 @@ const Headernav = (props) => {
                 
                 </div>
             <div className={style.navelement}>
-                {props.data.map(block => <Navblock headerType={props.headerType} sendCategory={props.sendCategory} data={block}/>
+                {props.data.map(block => <Navblock  key={block.text} headerType={props.headerType} sendCategory={props.sendCategory} data={block}/>
                 
                 )}
             </div>
