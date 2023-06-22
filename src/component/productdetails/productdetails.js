@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import {MdOutlineDeleteOutline} from 'react-icons/md'
  
-const ratingsDisplayList = [
+const ratingsDisplayArr = [
     {
         'reviewCount': 0,
         'reviewPercentage':0,
@@ -38,6 +38,7 @@ const ratingsDisplayList = [
 ]
 
 const ProductDetails = (props) => {
+    const [ratingsDisplayList,setRatingsDisplayList] = useState(JSON.parse(JSON.stringify(ratingsDisplayArr)));
     const { price,discount } = props.product;
     const navigate = useNavigate();
     const isProductPresentInWishlist = props.productPresentInWishlist ? true : false;
@@ -47,12 +48,14 @@ const ProductDetails = (props) => {
         if(props.cartData) {
             setIsProductPresentInCart(typeof(props.cartData.find(cart=>cart.product === props.product._id)) !== 'undefined') 
         }
+        let ratingarr = ratingsDisplayList;
         props.product.reviews.map(element => {
             let rating = Math.floor(element.rating);
-            let index = ratingsDisplayList.findIndex(val => val.rating === rating)
-            ratingsDisplayList[index].reviewCount++;
+            let index = ratingarr.findIndex(val => val.rating === rating)
+            ratingarr[index].reviewCount++;
         });
-        ratingsDisplayList.map(element => element.reviewPercentage = ( element.reviewCount/props.product.numOfReviews)*100)
+        ratingarr.map(element => element.reviewPercentage = ( element.reviewCount/props.product.numOfReviews)*100);
+        setRatingsDisplayList(ratingarr);
     },[])
     const date = new Date()
     const addItemInCart = () => {

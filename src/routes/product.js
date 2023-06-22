@@ -17,7 +17,7 @@ const Product = () => {
   const {user} = useSelector(state => state.user);
   const {cart} = useSelector(state => state.cart);
   const productId = location.pathname.split('/')[2];
-  const productPresentInWishlist = user?.wishlist?.find(item => item.product.toString() === product._id.toString());
+  const productPresentInWishlist = user?.wishlist?.find(item => item.product.toString() === product?._id?.toString());
   const addItemInCartHandler = (productId,data) => {
 
     return dispatch(addItemInCart(productId,cart._id,data))
@@ -33,7 +33,7 @@ const Product = () => {
     dispatch(getProduct(productId));
   },[dispatch,productId])
   return <>
-        { isLoading || isError ? <Loader /> :  <ProductDetails productPresentInWishlist={productPresentInWishlist} deleteReviewHandler={deleteReviewHandler} userId={user._id} addItemInWishlistHandler={addItemInWishlistHandler} product={product} addItemInCartHandler={addItemInCartHandler} cartData={cart.cartItems}/>}
+        { isLoading || isError ? <Loader /> :  <ProductDetails key={product._id} productPresentInWishlist={productPresentInWishlist} deleteReviewHandler={deleteReviewHandler} userId={user._id} addItemInWishlistHandler={addItemInWishlistHandler} product={product} addItemInCartHandler={addItemInCartHandler} cartData={cart.cartItems}/>}
   </>
 }
 

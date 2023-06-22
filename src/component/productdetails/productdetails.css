@@ -261,6 +261,19 @@
     }
 }
 @media only screen and (max-width: 900px) {
+    .product-ratings > div > .ratings-split { 
+        border-left: none;
+        padding-left: 0px;
+    }
+    .cart-wishlist-btn > button, .cart-wishlist-btn >a> button {
+        width: auto;
+    }
+    .delivery-options > form > span > input {
+        width: 70%;
+    }
+    .product-ratings > div {
+        display: grid;
+    }
     .product-detail-main {
         display: grid;
     }
