@@ -14,6 +14,7 @@ const Navblock = (props) => {
         }
         if(props.data.path && props.headerType === "account") {
             navigate(props.data.path)
+            return;
         }
         props.sendCategory(props.data.value);
     }
