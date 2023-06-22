@@ -18,6 +18,7 @@
     transition: ease .2s;
 }
 .headermain{
+    overflow: scroll;
     position: absolute;
     top: 0;
     bottom: 0;

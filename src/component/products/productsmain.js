@@ -64,7 +64,8 @@ const filterByRating = (event,val) => {
           <ProductsFilter sort={sort} price={price} sortHandler={sortHandler} priceHandler={priceHandler} getPriceValue={getPriceValue} filterByRating={filterByRating} />
           {isLoading || isError ? 
           <Loader /> : 
-          <Products  products={products} />}
+          <div>
+          <Products  products={products} />
           {itemPerPage < totalProductCountAfterFilter ? (
             <div className='paginationBox'>
               <Pagination
@@ -81,6 +82,9 @@ const filterByRating = (event,val) => {
               />
             </div>
           ) : <></> }
+            </div>
+          // 
+          }
          </div>  
       </Fragment>
 

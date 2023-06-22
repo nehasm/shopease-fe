@@ -85,3 +85,9 @@
     border-bottom: 1px solid #CFD7DF;
     margin: 20px 0px;
   }
+.container.footer {
+  padding: 30px;
+}
+.row.footer-line {
+  padding: 8px;
+}

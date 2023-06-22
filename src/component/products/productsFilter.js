@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Slider from '@mui/material/Slider';
 import './products.css';
 import Checkbox from '@mui/material/Checkbox';
@@ -7,8 +7,19 @@ import { AiFillStar } from 'react-icons/ai';
 import { RiArrowDropDownLine } from 'react-icons/ri';
 
 const ProductsFilter = (props) => {
-  return (
-    <div className='products-filter'>
+    const [showfilter,setShowfilter] = useState(false);
+    const showfilters = () => {
+        setShowfilter(!showfilter);
+    }
+    const filterClass = showfilter ? `products-filter active` : `products-filter`;
+  return <>
+    <div onClick={showfilters} className='apply-filter'>
+        Apply Filters 
+        <span>
+            <RiArrowDropDownLine />
+        </span>
+    </div>
+    <div className={filterClass}>
         <div className='filter-main'>
             <span className='filter-text'>Price</span>
             <Slider
@@ -51,7 +62,7 @@ const ProductsFilter = (props) => {
 
         </div>
     </div>
-)
+    </>
 }
 
 export default ProductsFilter
