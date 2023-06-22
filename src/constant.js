@@ -189,10 +189,6 @@ export const UserNav = [
                 path: '/wishlist'
             },
             {
-                text: 'Offers/Rewards',
-                path: '/offers'
-            },
-            {
                 text: 'Logout'
             },
         ]

@@ -13,22 +13,26 @@ const Wishlist = (props) => {
       
   }
   return <div className={`${style.cartitem} ${style.wishlistcartitem}`}>
-  <div className={style.productimg}>
-  <span className={style["product-card-img"]} style={{backgroundImage: `url(${props.product.image})`}}>
-      </span>
-  </div>
-  <div className={style.wishlistdesc}>
-      <div >
-          <span className={style.cartitemtitle}>{props.product.name}</span>
-      <div className={style.cartitemprice}>
-      <span>{`₹${props.product.price}`} <span className={style["price-without-discount-text"]}>{`₹${priceWithNoDiscount}`}</span> {`(${discount}%)`}</span>
-      </div>
-      <div className={style.removebtn}>
-          <button onClick={removeProductFromWishListHandler}>Remove</button>
-          <button onClick={moveToCart}>Add to Cart</button>
-      </div>
-      </div>
-  </div>
+<div className={style.wishlistdata}>
+<div className={style.productimg}>
+
+<span className={style["product-card-img"]} style={{backgroundImage: `url(${props.product.image})`}}>
+    </span>
+</div>
+<div className={style.wishlistdesc}>
+    <div >
+        <span className={style.cartitemtitle}>{props.product.name}</span>
+    <div className={style.cartitemprice}>
+    <span>{`₹${props.product.price}`} <span className={style["price-without-discount-text"]}>{`₹${priceWithNoDiscount}`}</span> {`(${discount}%)`}</span>
+    </div>
+    <div className={style.removebtn}>
+        <button onClick={removeProductFromWishListHandler}>Remove</button>
+        <button onClick={moveToCart}>Add to Cart</button>
+    </div>
+    </div>
+</div>
+</div>
+
   <div className={style.wishlistcross}>
   <RxCross2 onClick={removeProductFromWishListHandler}/>
   </div>
