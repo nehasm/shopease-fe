@@ -1,0 +1,34 @@
+.infocontainer {
+    margin: auto;
+    width: 60%;
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+.infoheading {
+    text-align: center;
+    margin: 16px;
+    padding: 16px;
+    color: #0079bf;
+    font-size: 24px;
+    font-weight: 600;
+    text-decoration: underline;
+}
+.infotext > div {
+    margin: 20px 0px;
+}
+.infotext > ul > li {
+    font-weight: 300;
+    font-style: normal;
+}
+.infotext > ul {
+    font-style: italic;
+    margin: 8px 0px;
+    color: #565656;
+}
+@media only screen and (max-width: 600px) {
+    .infoheading {
+        margin: 0;
+        padding: 0;
+    }
+
+ }

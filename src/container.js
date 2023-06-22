@@ -19,6 +19,16 @@ import Payment from './routes/payment';
 import Success from './routes/success';
 import Address from './routes/address';
 import CheckoutWrapper from './component/cart/checkoutwrapper';
+import Aboutus from './component/infocomponents/aboutus';
+import Contactus from './component/infocomponents/contactus';
+import Story from './component/infocomponents/story';
+import Tersmofuse from './component/infocomponents/termofuse';
+import Faq from './component/infocomponents/faq';
+import Privacy from './component/infocomponents/privacy';
+import CancelPolicy from './component/infocomponents/cancelpolicy';
+import Shipping from './component/infocomponents/shipping';
+import Trackorder from './component/infocomponents/trackorder';
+import Paymentpolicy from './component/infocomponents/paymentpolicy';
 
 
 const router = createBrowserRouter([
@@ -94,8 +104,47 @@ const router = createBrowserRouter([
   {
     path:'success',
     element: <Success />
+  },
+  {
+    path: 'about-us',
+    element: <Aboutus />
+  },
+  {
+    path: 'contact-us',
+    element: <Contactus />
+  },
+  {
+    path: 'story',
+    element: <Story />
+  },
+  {
+    path:'terms-of-use',
+    element: <Tersmofuse />
+  },
+  {
+    path: 'faq',
+    element: <Faq />
+  },
+  {
+    path: 'privacy',
+    element: <Privacy />
+  },
+  {
+    path: 'cancellations',
+    element: <CancelPolicy />
+  },
+  {
+    path:'shipping',
+    element:<Shipping />
+  },
+  {
+    path:'track-orders',
+    element: <Trackorder />
+  },
+  {
+    path:'payments-policy',
+    element: <Paymentpolicy />
   }
-
 ]);
 
 

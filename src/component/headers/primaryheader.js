@@ -60,7 +60,6 @@ const PrimaryHeader = (props) => {
             {Object.keys(user).length > 0 ? <span><div><Link to={`/profile`}>My Profile</Link></div>
             <div><Link to={'/orders'}>My Orders</Link></div>
             <div><Link to={'/wishlist'}>My WishList</Link></div>
-            <div>Offers/Rewards</div>
             <div onClick={logoutUserHandler}>Logout</div></span>:  <span><div><Link to={`/login`}>SignIn/SignUP</Link></div></span>}
             
             

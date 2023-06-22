@@ -31,6 +31,15 @@
     color: #777;
     text-decoration: none;
   }
+  .category-footer-text {
+    cursor: pointer;
+  }
+  .customer-policy {
+    cursor: pointer;
+  }
+  .about-info {
+    cursor: pointer;
+  }
   .social-media-main {
     margin-bottom: 20px;
     display: inline-block;

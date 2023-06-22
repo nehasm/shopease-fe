@@ -98,8 +98,8 @@ export const EmallInfo = [
         'value' : 'contact-us'
     },
     {
-        'name' : 'E-mall Story',
-        'value' : 'emall-story'
+        'name' : 'ShopEase Story',
+        'value' : 'story'
     }
 ]
 export const customerPolicies = [
@@ -129,11 +129,7 @@ export const customerPolicies = [
     },
     {
         'name' : 'Payments',
-        'value' : 'payments'
-    },
-    {
-        'name' : 'Sitemap',
-        'value' : 'sitemap'
+        'value' : 'payments-policy'
     }
 ]
 export const customerRatingUiInitialState = [
