@@ -1,0 +1,10 @@
+.toast-progress-icon-success {
+    fill: #0079bf;
+    width: 16px;
+    height: 16px;
+}
+.toast-progress-icon-error {
+    width: 16px;
+    height: 16px;
+    fill: #ff0000;
+}

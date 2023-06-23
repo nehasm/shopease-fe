@@ -2,19 +2,25 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const cartInitialData = {
     cart : {},
-    error : {},
-    loading: true
+    loading: false
 };
 
 const cartSlice = createSlice({
   name: 'cartData',
   initialState: cartInitialData,
   reducers: {
+    cartDataLoading : (state) => {
+      state.cart = state.cart;
+      state.loading = true;
+    },
     cartData: (state, action) => { 
       state.cart = action.payload.cart;
-      state.error = action.payload.error;
       state.loading = false;
     },
+    cartDataError: (state) => {
+      state.cart = state.cart;
+      state.loading = false;
+    }
   }
 })
 

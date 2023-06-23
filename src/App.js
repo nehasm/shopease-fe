@@ -3,6 +3,8 @@ import Container from './container';
 import store from './store';
 import { getUserData } from './service/user';
 import { getCart } from './service/cart';
+import { ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   useEffect(() => {
@@ -10,9 +12,11 @@ const App = () => {
     store.dispatch(getCart())
   },[])
   
-  return (
-    <Container/>
-  )
+  return <>
+  <Container/>
+  <ToastContainer position="bottom-left" autoClose={2000} toastStyle={{ color: "#000" }} />
+  </>
+    
 }
 
 export default App

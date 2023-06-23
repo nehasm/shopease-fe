@@ -10,7 +10,7 @@ import icon from '../assets/icon.png';
 import {BsArrowLeft} from 'react-icons/bs';
 
 const Cart = () => {
-  const {cart,loading,error} = useSelector(state=>state.cart);
+  const {cart,loading} = useSelector(state=>state.cart);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const priceObj = useMemo(()=>priceCalculation(cart.cartItems),[cart.cartItems]);
