@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const cartInitialData = {
     cart : {},
-    loading: false,
+    loading: true,
     error: {},
     isError: false
 };
@@ -11,12 +11,6 @@ const cartSlice = createSlice({
   name: 'cartData',
   initialState: cartInitialData,
   reducers: {
-    cartDataLoading : (state) => {
-      state.cart = {};
-      state.loading = true;
-      state.error = {};
-      state.isError= false;
-    },
     cartData: (state, action) => { 
       state.cart = action.payload.cart;
       state.loading = false;
@@ -37,7 +31,7 @@ const cartSlice = createSlice({
     },
     resetCartDataSetError: (state) => {
       state.cart = {};
-      state.loading = false;
+      state.loading = true;
       state.error = {};
       state.isError = false;
     },

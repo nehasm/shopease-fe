@@ -8,7 +8,6 @@ import { showToast } from "../component/common/toast/toast";
   export const getCart = () => {
     return async (dispatch) => {
       try {
-        dispatch(cartAction.cartDataLoading());
         const { data } = await axios.get(
           `http://localhost:8080/api/v1/cart`
         , { withCredentials: true });
@@ -21,7 +20,6 @@ import { showToast } from "../component/common/toast/toast";
 
   export const addItemInCart = (productId, cartId,productData) => async (dispatch) => {
     try {
-      dispatch(cartAction.cartDataLoading());
       const config = { headers: { "Content-Type": "application/json" } };
       const { data } = await axios.post(
         `/api/v1/cart?productId=${productId}&id=${cartId}`,
@@ -38,7 +36,6 @@ import { showToast } from "../component/common/toast/toast";
 
   export const removeItemFromCart = (productId, cartId) => async (dispatch) => {
     try {
-      dispatch(cartAction.cartDataLoading());
       const { data } = await axios.delete(
         `/api/v1/cart?productId=${productId}&cartId=${cartId}`
       );
@@ -52,7 +49,6 @@ import { showToast } from "../component/common/toast/toast";
 
   export const clearCart = (cartId) => async (dispatch) => {
     try {
-      dispatch(cartAction.cartDataLoading());
       const { data } = await axios.delete(
         `/api/v1/cart/clear?cartId=${cartId}`
       );
@@ -68,7 +64,6 @@ import { showToast } from "../component/common/toast/toast";
 
   export const updateCartItemQunatity = (productId,cartId,quantity) => async (dispatch) => {
     try {
-      dispatch(cartAction.cartDataLoading());
       const config = { headers: { "Content-Type": "application/json" } };
       const { data } = await axios.put(
         `/api/v1/cart?productId=${productId}&cartId=${cartId}`,
