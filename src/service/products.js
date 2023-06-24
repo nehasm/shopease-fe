@@ -14,11 +14,7 @@ export const getAllProducts =
           data.isError = false;
           dispatch(productsAction.productsData(data))
         } catch (error) {
-            const data = {
-                products : [],
-                isError : true
-            }
-          dispatch(productsAction.productsData(data));
+          dispatch(productsAction.productsDataError({error}));
         }
       }
   }
@@ -39,6 +35,12 @@ export const getAllProducts =
   export const clearproduct = () => {
     return async (dispatch) => {
       dispatch(productAction.resetErrorState())
+    }
+  }
+
+  export const clearproductsError = () => {
+    return async (dispatch) => {
+      dispatch(productsAction.resetProductsDataError())
     }
   }
 
