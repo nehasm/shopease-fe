@@ -13,10 +13,13 @@
     width: inherit;
     box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
 }
-.errortext > div:first-child {
+.errormsg,.errorreason {
     font-size: 16px;
     font-weight: 500;
     margin-bottom: 8px;
+    color: #565656;
+}
+.errorreason {
     color: #ff0000;
 }
 .errortext > div:last-child {

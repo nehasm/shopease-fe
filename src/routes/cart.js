@@ -1,21 +1,28 @@
-import React ,{useMemo} from 'react'
+import React ,{useEffect, useMemo} from 'react'
 import { useSelector } from 'react-redux';
 import CartItem from '../component/cart/cartitem';
-import { removeItemFromCart,updateCartItemQunatity,priceCalculation } from '../service/cart';
+import { removeItemFromCart,updateCartItemQunatity,priceCalculation,clearCartError,getCart } from '../service/cart';
 import { useDispatch } from 'react-redux';
 import Loader from '../component/common/loader';
 import { useNavigate } from 'react-router-dom';
 import style from '../component/cart/order.module.css';
 import icon from '../assets/icon.png';
+import Error from '../component/common/error';
 import {BsArrowLeft} from 'react-icons/bs';
 
 const Cart = () => {
-  const {cart,loading} = useSelector(state=>state.cart);
+  const {cart,loading,isError,error} = useSelector(state=>state.cart);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const priceObj = useMemo(()=>priceCalculation(cart.cartItems),[cart.cartItems]);
+  useEffect(()=> {
+    if(error) {
+      dispatch(clearCartError());
+      dispatch(getCart())
+    }
+  },[])
   const removeProductFromCart = (productId) => {
-    return dispatch(removeItemFromCart(productId,cart._id))
+    return dispatch(removeItemFromCart(productId,cart._id));
   }
   const updateQunatity = (productId,updateQunatity) => {
     return dispatch(updateCartItemQunatity(productId,cart._id,updateQunatity))
@@ -28,7 +35,7 @@ const Cart = () => {
     return navigate('/');
   }
   return <>
-  { loading ? <Loader/> : 
+  { loading ? <Loader/> : isError ? <Error message="Sorry! We are unable to fetch your cart items" error={error} navigateToHomePage={true}/> :
   <div>
     <div className={style.cartheader}>
       <BsArrowLeft onClick={moveToHomePage}/>

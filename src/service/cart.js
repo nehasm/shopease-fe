@@ -12,11 +12,9 @@ import { showToast } from "../component/common/toast/toast";
         const { data } = await axios.get(
           `http://localhost:8080/api/v1/cart`
         , { withCredentials: true });
-        data.error = {}
         dispatch(cartAction.cartData(data));
       } catch (error) {
-        showToast("error",error.message);
-        dispatch(cartAction.cartDataError());
+        dispatch(cartAction.cartDataSetError({error}))
       }
       }
   }
@@ -30,7 +28,6 @@ import { showToast } from "../component/common/toast/toast";
         productData,
         config
       );
-      data.error = {}
       dispatch(cartAction.cartData(data));
       showToast("success", "Successfully added product in the cart!")
     } catch (error) {
@@ -45,7 +42,6 @@ import { showToast } from "../component/common/toast/toast";
       const { data } = await axios.delete(
         `/api/v1/cart?productId=${productId}&cartId=${cartId}`
       );
-      data.error = {}
       dispatch(cartAction.cartData(data));
       showToast("success","Successfully removed product from the cart!");
     } catch (error) {
@@ -60,13 +56,15 @@ import { showToast } from "../component/common/toast/toast";
       const { data } = await axios.delete(
         `/api/v1/cart/clear?cartId=${cartId}`
       );
-      data.error = {}
       dispatch(cartAction.cartData(data));
     } catch (error) {
-      showToast("error",error.message)
       dispatch(cartAction.cartDataError());
     }
   };
+
+  export const clearCartError = () => async(dispatch) => {
+    dispatch(cartAction.resetCartDataSetError())
+  }
 
   export const updateCartItemQunatity = (productId,cartId,quantity) => async (dispatch) => {
     try {
@@ -77,7 +75,6 @@ import { showToast } from "../component/common/toast/toast";
         quantity,
         config
       );
-      data.error = {}
       dispatch(cartAction.cartData(data));
       showToast("success","Successfully updated product quantity!");
     } catch (error) {
