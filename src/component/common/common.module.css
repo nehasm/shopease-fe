@@ -1,0 +1,40 @@
+.errormain {
+    width: 60%;
+    margin: auto;
+    justify-content: center;
+    display: flex;
+}
+.errorcontainer {
+    position: relative;
+    top: 150px;
+    margin: 40px;
+    border: 1px solid #CFD7DF;
+    padding: 100px;
+    width: inherit;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+}
+.errortext > div:first-child {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #ff0000;
+}
+.errortext > div:last-child {
+    margin-bottom: 8px;
+    color: #565656;
+    font-style: italic;
+}
+.errorBtn button {
+    border-radius: 4px;
+    cursor: pointer;
+    color: #fff;
+    background: #298fca;
+    width: 100%;
+    padding: 16px 0px;
+    font-size: 14px;
+    margin-top: 12px;
+}
+.errorBtn {
+    width: 80%;
+    margin: auto;
+}

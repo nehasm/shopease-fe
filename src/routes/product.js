@@ -2,18 +2,19 @@ import React, {useEffect} from 'react';
 import ProductDetails from '../component/productdetails/productdetails';
 import { useLocation } from 'react-router-dom';
 import { useDispatch} from 'react-redux';
-import { deleteReview, getProduct } from '../service/products';
+import { deleteReview, getProduct,clearproduct } from '../service/products';
 import { useSelector } from 'react-redux';
 import Loader from '../component/common/loader';
 import { addItemInCart } from '../service/cart';
 import { addItemInWishlist} from '../service/user';
 import { useNavigate } from 'react-router-dom';
+import Error from '../component/common/error';
 
 const Product = () => {
   const location = useLocation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isError,isLoading,product} = useSelector((state) => state.product);
+  const { isError,error, isLoading,product} = useSelector((state) => state.product);
   const {user} = useSelector(state => state.user);
   const {cart} = useSelector(state => state.cart);
   const productId = location.pathname.split('/')[2];
@@ -30,10 +31,14 @@ const Product = () => {
     navigate(0);
   }
   useEffect(() => {
+    if(isError) {
+      dispatch(clearproduct())
+    }
     dispatch(getProduct(productId));
   },[dispatch,productId])
+  
   return <>
-        { isLoading || isError ? <Loader /> :  <ProductDetails key={product._id} productPresentInWishlist={productPresentInWishlist} deleteReviewHandler={deleteReviewHandler} userId={user._id} addItemInWishlistHandler={addItemInWishlistHandler} product={product} addItemInCartHandler={addItemInCartHandler} cartData={cart.cartItems}/>}
+      {isLoading ? <Loader/> : isError ? <Error message="Sorry! Unable to load the product details" error={error} navigateToHomePage={true} /> : <ProductDetails key={product._id} productPresentInWishlist={productPresentInWishlist} deleteReviewHandler={deleteReviewHandler} userId={user._id} addItemInWishlistHandler={addItemInWishlistHandler} product={product} addItemInCartHandler={addItemInCartHandler} cartData={cart.cartItems}/>}
   </>
 }
 

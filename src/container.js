@@ -34,7 +34,6 @@ import Paymentpolicy from './component/infocomponents/paymentpolicy';
 const router = createBrowserRouter([
   { path:'/',
   element: <Main />,
-  errorElement: <Error/>,
   children:[
     {
       path: '/',

@@ -29,16 +29,17 @@ export const getAllProducts =
         try {
           let link = `http://localhost:8080/api/v1/product/${id}`;
           const { data } = await axios.get(link);
-          data.isError = false;
           dispatch(productAction.productData(data))
         } catch (error) {
-            const data = {
-                product : {},
-                isError : true
-            }
-          dispatch(productAction.productData(data))
+          dispatch(productAction.productDataError({error}))
         }
       }
+  }
+
+  export const clearproduct = () => {
+    return async (dispatch) => {
+      dispatch(productAction.resetErrorState())
+    }
   }
 
   export const addReview = (reviewData) => async (dispatch) => {
