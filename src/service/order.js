@@ -9,14 +9,15 @@ import axios from "axios";
         const { data } = await axios.get(
             `/api/v1/my-orders`
         , { withCredentials: true });
-        data.error = {}
         dispatch(orderAction.orderData(data));
       } catch (error) {
-          let data = {
-              cart : {},
-              error 
-          }
-          dispatch(orderAction.orderData(data));
+          dispatch(orderAction.orderDataError({error}));
       }
       }
+  }
+
+  export const clearOrderError = () => {
+    return async (dispatch) => {
+      dispatch(orderAction.resetOrderDataError())
+    }
   }

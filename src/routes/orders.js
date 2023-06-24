@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import Loader from '../component/common/loader';
 import OrderedItem from '../component/cart/ordereditem';
 import { useDispatch } from 'react-redux';
-import { getAllOrders } from '../service/order';
+import { getAllOrders, clearOrderError } from '../service/order';
 import style from '../component/cart/order.module.css';
 import { useNavigate } from 'react-router-dom';
 import icon from '../assets/icon.png';
@@ -12,16 +12,19 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import ReviewForm from '../component/products/reviewform';
 import { addReview } from '../service/products';
-
+import Error from '../component/common/error'
 
 const Orders = () => {
-    const {orders,error,loading} = useSelector(state => state.order);
+    const {orders,error,isError, loading} = useSelector(state => state.order);
     const [productId, setProductId] = useState("");
     const [openModal,setOpenModal] = useState(false);
     const handleClose = () => setOpenModal(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     useEffect(()=>{
+      if(isError) {
+        dispatch(clearOrderError())
+      }
         dispatch(getAllOrders())
     },[])
     const moveToHomePage = () => {
@@ -46,7 +49,7 @@ const Orders = () => {
       </span>
     </div>
     <div className={style.ordermain}>
-  {loading ? <Loader/> : <div>
+  {loading ? <Loader/> : isError ? <Error message="Sorry! We are unable to fetch your order items" error={error} navigateToHomePage={true}/> : <div>
     {orders.map(order => <OrderedItem openModelHandler={openModelHandler} order={order}/>)}
   </div>}
   </div>
