@@ -45,10 +45,11 @@ const Cart = () => {
     </div>
     <div className={style.cartmain}>
       <div className={style.cartitemsmain}>
-        {cart.cartItems.map(cartItem=>
-        <CartItem cartItem={cartItem} updateQunatity={updateQunatity} removeProductFromCart={removeProductFromCart}/>)}
+        {cart.cartItems.length > 0 ? cart.cartItems.map(cartItem=>
+        <CartItem cartItem={cartItem} updateQunatity={updateQunatity} removeProductFromCart={removeProductFromCart}/>) : <div className={style["no-item-text"]}>No items present in your Cart</div>}
 
       </div>
+      {cart.cartItems.length > 0 &&  
       <div className={style.cartamountmain}>
       <div className={style.cartamountmaincard}>
       <div className={style.pricedetails}>PRICE DETAILS</div>
@@ -91,7 +92,7 @@ const Cart = () => {
       </div>
       </div>
       <div className={style.deliverytext}>Please click on the place order to know the delivery charges *</div>
-      </div>
+      </div>}
       
     </div>
     </div>

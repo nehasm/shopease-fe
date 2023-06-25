@@ -11,7 +11,7 @@ import Loader from '../component/common/loader';
 import Error from '../component/common/error';
 
 const WishList = () => {
-    const { user,error,loading,isError} = useSelector(state=>state.user);
+    const { user,error,loading,isError,isAuthenticate} = useSelector(state=>state.user);
     const navigate = useNavigate();
     const dispatch = useDispatch();
     useEffect(()=> {
@@ -37,7 +37,7 @@ const WishList = () => {
     </div>
     <div className={`${style.cartmain} ${style.wishlistmain}`}>
       <div className={style.wishlistitem}>
-          {user ? user.wishlist.map(product => <Wishlist product={product} removeProductFromWishList={removeProductFromWishList}/>) : "Loading data"}
+          {user.wishlist.length > 0 ? user.wishlist.map(product => <Wishlist product={product} removeProductFromWishList={removeProductFromWishList}/>) : <div className={style["no-item-text"]}>No items present in wishlist</div>}
       </div>
     </div>
   </div>

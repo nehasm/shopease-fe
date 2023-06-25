@@ -49,9 +49,10 @@ const Orders = () => {
       </span>
     </div>
     <div className={style.ordermain}>
-  {loading ? <Loader/> : isError ? <Error message="Sorry! We are unable to fetch your order items" error={error} navigateToHomePage={true}/> : <div>
+  {loading ? <Loader/> : isError ? <Error message="Sorry! We are unable to fetch your order items" error={error} navigateToHomePage={true}/> : orders.length > 0 ? 
+  <div>
     {orders.map(order => <OrderedItem openModelHandler={openModelHandler} order={order}/>)}
-  </div>}
+  </div> : <div className={style["no-item-text"]}>No order history present</div>}
   </div>
   </div>
     <Modal show={openModal} onHide={handleClose} 

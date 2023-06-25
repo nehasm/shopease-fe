@@ -62,7 +62,8 @@
 .primary-header > .logo > img{
     position: absolute;
     height: 48px;
-    right: 12%
+    right: 12%;
+    width: 72px;
 }
 .right-section-main {
     position: relative;
