@@ -13,6 +13,7 @@ import './products.css'
 const ProductsMain = ({match}) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useDispatch();
+  const { user,loading,isAuthenticate} = useSelector((state) => state.user);
   const { error,isError,isLoading,products,totalProductCount,itemPerPage,totalProductCountAfterFilter } = useSelector((state) => state.products);
   const [currentPage, setCurrentPage] = useState(1);
   const [price, setPrice] = useState([0, 100000]);

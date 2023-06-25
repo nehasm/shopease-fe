@@ -3,7 +3,9 @@ import { createSlice } from '@reduxjs/toolkit';
 const userInitialData = {
     user : {},
     error : {},
-    loading: true
+    loading: true,
+    isError: false,
+    isAuthenticate : false
 };
 
 const userSlice = createSlice({
@@ -12,14 +14,25 @@ const userSlice = createSlice({
   reducers: {
     userData: (state, action) => { 
       state.user = action.payload.user;
+      state.error = {};
+      state.loading = false;
+      state.isError = false;
+      state.isAuthenticate = true
+    },
+    userDataError: (state,action) => {
+      state.user = {}
       state.error = action.payload.error;
       state.loading = false;
+      state.isError = true;
+      state.isAuthenticate = false
     },
-    onlyUpdateError: (state,action) => {
-      state.user = state.user;
-      state.error = action.payload;
-      state.loading = false;
-    }
+    resetUserError : (state) => {
+      state.user = {};
+      state.error = {};
+      state.loading = true;
+      state.isError = false;
+      state.isAuthenticate = false
+    },
   }
 })
 

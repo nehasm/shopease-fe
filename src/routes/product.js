@@ -15,10 +15,10 @@ const Product = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isError,error, isLoading,product} = useSelector((state) => state.product);
-  const {user} = useSelector(state => state.user);
+  const {user,isAuthenticate } = useSelector(state => state.user);
   const {cart} = useSelector(state => state.cart);
   const productId = location.pathname.split('/')[2];
-  const productPresentInWishlist = user?.wishlist?.find(item => item.product.toString() === product?._id?.toString());
+  const productPresentInWishlist = isAuthenticate ? user?.wishlist?.find(item => item.product.toString() === product?._id?.toString()) : null;
   const addItemInCartHandler = (productId,data) => {
 
     return dispatch(addItemInCart(productId,cart._id,data))

@@ -4,6 +4,9 @@
     justify-content: center;
     display: flex;
 }
+.errormain.inprofile {
+    width: 100%;
+}
 .errorcontainer {
     position: relative;
     top: 150px;
@@ -12,6 +15,9 @@
     padding: 100px;
     width: inherit;
     box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+}
+.errorcontainer.inprofilecontainer {
+    top: 0;
 }
 .errormsg,.errorreason {
     font-size: 16px;

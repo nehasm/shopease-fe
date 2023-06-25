@@ -1,9 +1,8 @@
 import { userAction } from "../reducers/user";
 import axios from "axios";
-
+import { showToast } from "../component/common/toast/toast";
 
 export const userLogin = (email, password) => async (dispatch) => {
-
     try {
       const config = { headers: { "Content-Type": "application/json" } };
       const { data } = await axios.post(
@@ -11,14 +10,10 @@ export const userLogin = (email, password) => async (dispatch) => {
         { email, password },
         config
       );
-      data.error = {}
       dispatch(userAction.userData(data));
+      showToast("success", "Successfully login!")
     } catch (error) {
-        let data = {
-            user : {},
-            error 
-        }
-      dispatch(userAction.userData(data));
+      showToast("error","Sorry! Unable to login.")
     }
   };
 
@@ -26,14 +21,10 @@ export const userLogin = (email, password) => async (dispatch) => {
     try {
       const config = { headers: { "Content-Type": "application/json" } };
       const { data } = await axios.post(`/api/v1/register`, userData, config);
-      data.error = {}
       dispatch(userAction.userData(data));
+      showToast("success", "Successfully signup!")
     } catch (error) {
-        let data = {
-            user : {},
-            error
-        }
-        dispatch(userAction.userData(data));
+      showToast("error","Sorry! Unable to signup.")
     }
   };
 
@@ -41,14 +32,9 @@ export const userLogin = (email, password) => async (dispatch) => {
     return async (dispatch) => {
         try {
           const { data } = await axios.get(`/api/v1/user`);
-          data.error = {}
           dispatch(userAction.userData(data));
         } catch (error) {
-            let data = {
-                user : {},
-                error
-            }
-            dispatch(userAction.userData(data));
+            dispatch(userAction.userDataError({error}));
         }
       }
   }
@@ -58,25 +44,21 @@ export const userLogin = (email, password) => async (dispatch) => {
       const config = { headers: { "Content-Type": "application/json" } };
       await axios.post(`/api/v1/forgot/password`, userData, config);
     } catch (error) {
-        let data = {
-            user : {},
-            error
-        }
-        dispatch(userAction.onlyUpdateError(data));
+      showToast("error","Error occurred! Please try again.")
     }
   };
+
   export const logoutUser = () => {
     return async (dispatch) => {
         try {
           const { data } = await axios.get(`/api/v1/logout`);
-          data.error = {}
-          data.user = null
-          dispatch(userAction.userData(data));
+          dispatch(userAction.resetUserError());
         } catch (error) {
-            dispatch(userAction.onlyUpdateError(error));
+          showToast("error","Sorry! Unable to logout");
         }
       }
   }
+
   export const resetPassword = (tokenData,passwordData) => async (dispatch) => {
     try {
       const config = { headers: { "Content-Type": "application/json" } };
@@ -85,14 +67,10 @@ export const userLogin = (email, password) => async (dispatch) => {
         passwordData,
         config
       );
-      data.error = {}
       dispatch(userAction.userData(data));
+      showToast("success", "Successfully! Reset your password.")
     } catch (error) {
-        let data = {
-            user : {},
-            error 
-        }
-      dispatch(userAction.userData(data));
+      showToast("success", "Sorry! Unable to reset your password.")
     }
   };
 
@@ -104,14 +82,10 @@ export const userLogin = (email, password) => async (dispatch) => {
         profileData,
         config
       );
-      data.error = {}
       dispatch(userAction.userData(data));
+      showToast("success", "Successfully! Updated your profile.")
     } catch (error) {
-        let data = {
-            user : {},
-            error 
-        }
-      dispatch(userAction.userData(data));
+      showToast("error","Sorry! Unable to update your profile");
     }
   };
 
@@ -123,14 +97,10 @@ export const userLogin = (email, password) => async (dispatch) => {
         passowrdData,
         config
       );
-      data.error = {}
       dispatch(userAction.userData(data));
+      showToast("success", "Successfully! Changed your profile.")
     } catch (error) {
-        let data = {
-            user : {},
-            error 
-        }
-      dispatch(userAction.userData(data));
+      showToast("error","Sorry! Unable to change your password");
     }
   };
 
@@ -143,14 +113,10 @@ export const userLogin = (email, password) => async (dispatch) => {
         productData,
         config
       );
-      data.error = {}
       dispatch(userAction.userData(data));
+      showToast("success", "Added product in the wishlist")
     } catch (error) {
-        let data = {
-            user : {},
-            error 
-        }
-      dispatch(userAction.userData(data));
+      showToast("error","Sorry! Unable to add product in the wishlist");
     }
   };
   export const removeProductFromWishlist = (productId) => async (dispatch) => {
@@ -158,13 +124,13 @@ export const userLogin = (email, password) => async (dispatch) => {
       const { data } = await axios.delete(
         `/api/v1/wishlist?productId=${productId}`
       );
-      data.error = {}
       dispatch(userAction.userData(data));
+      showToast("success", "Product removed from the wishlist")
     } catch (error) {
-        let data = {
-            user : {},
-            error 
-        }
-        dispatch(userAction.userData(data));
+      showToast("error","Sorry! Unable to remove product from the wishlist");
     }
   };
+
+  export const clearUserError = () => async (dispatch) => {
+    dispatch(userAction.resetUserError())
+  }

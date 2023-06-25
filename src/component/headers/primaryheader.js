@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import style from './header.module.css';
 import icon from '../../assets/icon.png';
 import { FiSearch } from 'react-icons/fi';
@@ -11,18 +11,29 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from '../../service/user';
 import Headernav from '../common/sidenav/headernav';
 import {UserNav} from '../../constant';
-
+import { useNavigate } from 'react-router-dom';
+import { getUserData, clearUserError} from '../../service/user';
 const PrimaryHeader = (props) => {
   const dispatch = useDispatch();
   const [openSideNav, setOpenSideNav] = useState(false);
-  const {user} = useSelector(state => state.user);
+  const navigate = useNavigate();
+  const {isAuthenticate,isError} = useSelector(state => state.user);
   const {cart} = useSelector(state => state.cart);
+  useEffect(() => {
+    if(isError) {
+      dispatch(clearUserError());
+      dispatch(getUserData());
+    }
+  },[])
   const cartLength = cart.cartItems ? cart.cartItems.length : 0 ;
   const logoutUserHandler = () => {
     dispatch(logoutUser());
   };
   const closeSideNavHandler = () => {
     setOpenSideNav(false);
+  }
+  const moveToWishlist = () => {
+    navigate('/wishlist')
   }
   return (
     <div className={style["primary-header"]}>
@@ -57,20 +68,16 @@ const PrimaryHeader = (props) => {
               <p> My Account </p>
             </span>
           <div className={style["account-dd"]}>
-            {Object.keys(user).length > 0 ? <span><div><Link to={`/profile`}>My Profile</Link></div>
+            {isAuthenticate ? <span><div><Link to={`/profile`}>My Profile</Link></div>
             <div><Link to={'/orders'}>My Orders</Link></div>
             <div><Link to={'/wishlist'}>My WishList</Link></div>
             <div onClick={logoutUserHandler}>Logout</div></span>:  <span><div><Link to={`/login`}>SignIn/SignUP</Link></div></span>}
-            
-            
           </div>
           </div>
-          <div>
+          <div onClick={() => moveToWishlist()}>
             <span> 
-              <Link to={'/wishlist'}>
               <AiOutlineHeart/>  
               <p> Wishlist </p>
-              </Link>
             </span> 
           </div>
           <div><span><Link to={'/cart'}> <AiOutlineShoppingCart/> <p> Cart </p></Link></span>{cartLength > 0 && <span className={style.cartcounttt}>{cartLength}</span>} </div>

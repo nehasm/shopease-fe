@@ -9,8 +9,10 @@ const Error = (props) => {
     navigate('/')
   }
  }
-  return  <div className={style.errormain}>
-    <div className={style.errorcontainer}>
+ const errormainClass = props.inProfileRoute ? `${style.errormain} ${style.inprofile}` : `${style.errormain}`;
+ const errorContainerClass = props.inProfileRoute ? `${style.errorcontainer} ${style.inprofilecontainer}` : `${style.errorcontainer}`;
+  return  <div className={errormainClass}>
+    <div className={errorContainerClass}>
         <div className={style.errortext}>
           <div className={style.errormsg}>
           {`${props.message}. Please find the reason below.`}
