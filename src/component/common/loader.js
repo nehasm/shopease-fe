@@ -1,8 +1,16 @@
-import React from 'react'
+import React from 'react';
+import style from './common.module.css'
 
-const Loader = () => {
+const Loader = (props) => {
+  let loaderClass;
+  if(props.loaderSize === "small") {
+    loaderClass = style.loadersmall;
+  } else {
+    loaderClass = style.loaderbig;
+  }
+
   return (
-    <div>Loading....</div>
+    <div class={loaderClass}></div>
   )
 }
 

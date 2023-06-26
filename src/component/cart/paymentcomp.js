@@ -120,7 +120,7 @@ const Paymentcomp = (props) => {
             <CardCvcElement  />
           </div>
           <div className={style["text-align-center"]}>
-            {payBtn?.current?.disabled ? <Loader/> :
+            {payBtn?.current?.disabled ? <Loader loaderSize={"small"}/> :
                       <input
                       type="submit"
                       value={`Pay - ${orderRequestObj.totalPrice}`}
