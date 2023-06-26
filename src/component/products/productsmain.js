@@ -25,7 +25,7 @@ const ProductsMain = ({match}) => {
   useEffect( () => {
     if(isError){
       dispatch(clearproductsError())
-    }
+    } 
       dispatch(getAllProducts(searchTerm,currentPage,category,price,rating));
   },[dispatch,price,rating,currentPage,searchTerm,category])
 

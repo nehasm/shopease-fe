@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './footer.css';
 import { ProductCategories,EmallInfo ,customerPolicies} from '../../constant';
 import { BsTwitter } from 'react-icons/bs';
@@ -8,11 +8,17 @@ import { useNavigate } from 'react-router-dom';
 
 const Footer = (props) => {
   const navigate = useNavigate();
+  const [newslettermail,setnewslettermail] = useState("");
   const sendCategory = (val) => {
     props.checkByCategory(val)
   }
   const moveToPolicyDetails = (val) => {
     navigate(`/${val}`)
+  }
+  const subscribeToNewsLetter = (e) => {
+    e.preventdefault();
+    setnewslettermail("");
+    return;
   }
   return (
     <div className='footer-main'>
@@ -48,8 +54,8 @@ const Footer = (props) => {
         <span className='news-letter'>
         <h3>Newsletter</h3>
         <p>Subscribe to our newsletter to receive news, updates, and special offers:</p>
-        <form>
-          <input type="email" placeholder="Enter your email" required />
+        <form onSubmit={subscribeToNewsLetter}>
+          <input type="email" value={newslettermail} onChange={(e) => setnewslettermail(e.target.value)} placeholder="Enter your email" required />
           <button type="submit">Subscribe</button>
         </form>
         </span>
