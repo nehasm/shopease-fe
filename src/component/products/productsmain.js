@@ -11,9 +11,8 @@ import Loader from '../common/loader';
 import './products.css'
 
 const ProductsMain = ({match}) => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const dispatch = useDispatch();
-  const { user,loading,isAuthenticate} = useSelector((state) => state.user);
   const { error,isError,isLoading,products,totalProductCount,itemPerPage,totalProductCountAfterFilter } = useSelector((state) => state.products);
   const [currentPage, setCurrentPage] = useState(1);
   const [price, setPrice] = useState([0, 100000]);
@@ -27,7 +26,7 @@ const ProductsMain = ({match}) => {
       dispatch(clearproductsError())
     } 
       dispatch(getAllProducts(searchTerm,currentPage,category,price,rating));
-  },[dispatch,price,rating,currentPage,searchTerm,category])
+  },[dispatch,price,rating,currentPage,searchTerm,category,isError])
 
 const sortHandler = (option) => {
     if(sort.value !== option.value) {
