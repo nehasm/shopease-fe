@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react'; 
+import React from 'react'; 
 import {createBrowserRouter,RouterProvider} from 'react-router-dom'; 
 import Main from './routes/main';
 import Product from './routes/product';
 import Checkout from './routes/checkout';
-import Error from './component/common/error';
 import ProductsMain from './component/products/productsmain';
 import LoginRoute from './routes/login';
 import ForgotPasswordForm from './component/account/forgotpasswordform';

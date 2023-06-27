@@ -24,10 +24,9 @@ const cartSlice = createSlice({
       state.isError = true;
     },
     cartDataError: (state) => {
-      state.cart = state.cart;
       state.loading = false;
       state.error = {};
-      state.loading = false;
+      state.isError = false;
     },
     resetCartDataSetError: (state) => {
       state.cart = {};

@@ -4,7 +4,6 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import Paymentcomp from '../component/cart/paymentcomp';
 import { useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 
 
 const Payment = () => {

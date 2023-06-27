@@ -51,7 +51,7 @@ export const userLogin = (email, password) => async (dispatch) => {
   export const logoutUser = () => {
     return async (dispatch) => {
         try {
-          const { data } = await axios.get(`/api/v1/logout`);
+          await axios.get(`/api/v1/logout`);
           dispatch(userAction.resetUserError());
         } catch (error) {
           showToast("error","Sorry! Unable to logout");

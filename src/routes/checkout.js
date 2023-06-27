@@ -7,7 +7,6 @@ import { priceCalculation } from '../service/cart';
 
 const Checkout = () => {
   const history = useLocation();
-  const [allowPayment,setAllowPayment] = useState(false);
   const [changeTab] = useOutletContext()
   const [orderItems,setOrderItems] = useState(history.state.orderItems);
   const cartId = history.state.cartId;

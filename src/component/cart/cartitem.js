@@ -24,11 +24,7 @@ const CartItem = (props) => {
     const removeProduct = () => {
         return props.removeProductFromCart(props.cartItem.product)
     }
-    const moveToWishlist = () => {
-        
-    }
     const priceWithNoDiscount = Math.round(props.cartItem.discount ? props.cartItem.price * 100 / (100 - props.cartItem.discount) : props.cartItem.price);
-    const discount = 80;
   return <div className={style.cartitem}>
     <div className={style.productimg}>
     <span className={style["product-card-img"]} style={{backgroundImage: `url(${props.cartItem.image})`}}>
@@ -47,7 +43,6 @@ const CartItem = (props) => {
         </div>
         <div className={style.removebtn}>
             <button onClick={removeProduct}>Remove</button>
-            <button onClick={moveToWishlist}>Add to wishlist</button>
         </div>
         </div>
     </div>

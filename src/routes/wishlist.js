@@ -11,7 +11,7 @@ import Loader from '../component/common/loader';
 import Error from '../component/common/error';
 
 const WishList = () => {
-    const { user,error,loading,isError,isAuthenticate} = useSelector(state=>state.user);
+    const { user,error,loading,isError} = useSelector(state=>state.user);
     const navigate = useNavigate();
     const dispatch = useDispatch();
     useEffect(()=> {

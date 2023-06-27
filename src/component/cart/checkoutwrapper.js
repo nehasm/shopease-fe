@@ -19,6 +19,7 @@ const CheckoutWrapper = () => {
           case "payment":
             navigate(`/checkout/${val}`,{state:{orderData:data,priceData:priceObj,cartId:id}});
             break;
+          default:
         }
         
     }

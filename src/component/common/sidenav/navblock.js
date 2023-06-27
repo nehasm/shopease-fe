@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {MdOutlineKeyboardArrowDown} from 'react-icons/md'
 import style from './headernav.module.css';
 import { useNavigate } from 'react-router-dom';
