@@ -13,7 +13,7 @@ export const ProductCategories = [
     },
     {
         text:' Accessories',
-        value:' accessories'
+        value:'accessories'
     },
     {
         text:'Home & living',
