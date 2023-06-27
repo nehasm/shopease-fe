@@ -8,7 +8,6 @@ import style from '../component/cart/order.module.css';
 import { useNavigate } from 'react-router-dom';
 import icon from '../assets/icon.png';
 import {BsArrowLeft} from 'react-icons/bs';
-import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import ReviewForm from '../component/products/reviewform';
 import { addReview } from '../service/products';
