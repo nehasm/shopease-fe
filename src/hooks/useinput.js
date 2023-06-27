@@ -14,7 +14,7 @@ const useInput = (validationCheckName,initialValue="") => {
             valueIsValid = enteredValue.trim() !== '' && enteredValue.includes('@');
             break;
         case 'is_password_and_not_empty':
-            valueIsValid = enteredValue.trim() !== '' && enteredValue.length > 8;
+            valueIsValid = enteredValue.trim() !== '' && enteredValue.length >= 8;
             break;
         default:
     }
