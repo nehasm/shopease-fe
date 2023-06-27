@@ -1,4 +1,4 @@
-import React, { Fragment, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import {
   CardNumberElement,
   CardCvcElement,
@@ -33,7 +33,7 @@ const Paymentcomp = (props) => {
     }
     try {
       const config = { headers: { "Content-Type": "application/json" } };
-      const { data } = await axios.post(
+      await axios.post(
         `/api/v1/order`,
         orderRequestObj,
         config

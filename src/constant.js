@@ -161,13 +161,6 @@ export const offerList = [
         id:6
     }
 ]
-
-{/* <div><Link to={`/login`}>SignIn/SignUP</Link></div>
-            <div><Link to={`/profile`}>My Profile</Link></div>
-            <div><Link to={'/orders'}>My Orders</Link></div>
-            <div><Link to={'/wishlist'}>My WishList</Link></div>
-            <div>Offers/Rewards</div>
-            <div onClick={logoutUserHandler}>Logout</div> */}
 export const UserNav = [
     {
         text : 'My Account',
@@ -200,10 +193,5 @@ export const UserNav = [
     {
         text : 'Cart',
         path: '/cart'
-    },
-]
-const categoryNav = [
-    {
-        text: 'Logout'
     },
 ]
