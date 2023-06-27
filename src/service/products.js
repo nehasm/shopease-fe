@@ -6,9 +6,9 @@ export const getAllProducts =
   (searchTerm,currentPage = 1,category,price = [0, 100000],ratings = 0) => {
     return async (dispatch) => {
         try {
-          let link = `http://localhost:8080/api/v1/products?searchTerm=${searchTerm}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}&page=${currentPage}`;
+          let link = `/api/v1/products?searchTerm=${searchTerm}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}&page=${currentPage}`;
           if(category) {
-            link = `http://localhost:8080/api/v1/products?searchTerm=${searchTerm}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}&category=${category}&page=${currentPage}`;
+            link = `/api/v1/products?searchTerm=${searchTerm}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}&category=${category}&page=${currentPage}`;
           } 
           const { data } = await axios.get(link);
           data.isError = false;
@@ -23,7 +23,7 @@ export const getAllProducts =
   (id) => {
     return async (dispatch) => {
         try {
-          let link = `http://localhost:8080/api/v1/product/${id}`;
+          let link = `/api/v1/product/${id}`;
           const { data } = await axios.get(link);
           dispatch(productAction.productData(data))
         } catch (error) {

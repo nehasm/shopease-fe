@@ -9,7 +9,7 @@ import { showToast } from "../component/common/toast/toast";
     return async (dispatch) => {
       try {
         const { data } = await axios.get(
-          `http://localhost:8080/api/v1/cart`
+          `/api/v1/cart`
         , { withCredentials: true });
         dispatch(cartAction.cartData(data));
       } catch (error) {
