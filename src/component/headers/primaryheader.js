@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from '../../service/user';
 import Headernav from '../common/sidenav/headernav';
-import {UserNav} from '../../constant';
+import {UserNav , userNavNotAuthenticated} from '../../constant';
 import { useNavigate } from 'react-router-dom';
 import { getUserData, clearUserError} from '../../service/user';
 const PrimaryHeader = (props) => {
@@ -60,7 +60,7 @@ const PrimaryHeader = (props) => {
       <div className={style["right-section-main"]}>
       <span onClick={()=>setOpenSideNav(true)} className={style["hamburger"]}> <GiHamburgerMenu />
         </span> 
-        {openSideNav ? <Headernav data={UserNav} headerType={"account"} closeSideNavHandler={closeSideNavHandler}/> : 
+        {openSideNav ? isAuthenticate ? <Headernav data={UserNav} headerType={"account"} closeSideNavHandler={closeSideNavHandler}/> : <Headernav data={userNavNotAuthenticated} headerType={"account"} closeSideNavHandler={closeSideNavHandler}/> : 
         <div className={style["right-section"]}>
           <div className={style["account-main"]}>
             <span> 
@@ -71,7 +71,7 @@ const PrimaryHeader = (props) => {
             {isAuthenticate ? <span><div><Link to={`/profile`}>My Profile</Link></div>
             <div><Link to={'/orders'}>My Orders</Link></div>
             <div><Link to={'/wishlist'}>My WishList</Link></div>
-            <div onClick={logoutUserHandler}>Logout</div></span>:  <span><div><Link to={`/login`}>SignIn/SignUP</Link></div></span>}
+            <div onClick={logoutUserHandler}>Logout</div></span>:  <span><div><Link to={`/login`}>Login/SignUP</Link></div></span>}
           </div>
           </div>
           <div onClick={() => moveToWishlist()}>

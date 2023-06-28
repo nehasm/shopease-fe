@@ -166,7 +166,7 @@ export const UserNav = [
         text : 'My Account',
         options : [
             {
-                text: 'SignIn/SignUp',
+                text: 'Login/SignUp',
                 path: '/login'
             },
             {
@@ -184,6 +184,25 @@ export const UserNav = [
             {
                 text: 'Logout'
             },
+        ]
+    },
+    {
+        text : 'Wishlist',
+        path: '/wishlist'
+    },
+    {
+        text : 'Cart',
+        path: '/cart'
+    },
+]
+export const userNavNotAuthenticated = [
+    {
+        text : 'My Account',
+        options : [
+            {
+                text: 'Login/SignUp',
+                path: '/login'
+            }
         ]
     },
     {

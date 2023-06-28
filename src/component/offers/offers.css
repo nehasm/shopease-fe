@@ -25,3 +25,6 @@
   .carousel-inner > .item{
     width: 100%;
  }
+ .carousel-control-next, .carousel-control-prev { 
+  z-index: 0;
+ }
