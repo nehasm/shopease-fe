@@ -65,7 +65,7 @@ const PrimaryHeader = (props) => {
           <div className={style["account-main"]}>
             <span> 
               <VscAccount /> 
-              <p> My Account </p>
+              <p> Accounts </p>
             </span>
           <div className={style["account-dd"]}>
             {isAuthenticate ? <span><div><Link to={`/profile`}>My Profile</Link></div>

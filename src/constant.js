@@ -163,7 +163,7 @@ export const offerList = [
 ]
 export const UserNav = [
     {
-        text : 'My Account',
+        text : 'Accounts',
         options : [
             {
                 text: 'Login/SignUp',
@@ -197,7 +197,7 @@ export const UserNav = [
 ]
 export const userNavNotAuthenticated = [
     {
-        text : 'My Account',
+        text : 'Accounts',
         options : [
             {
                 text: 'Login/SignUp',
