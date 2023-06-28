@@ -166,10 +166,6 @@ export const UserNav = [
         text : 'Accounts',
         options : [
             {
-                text: 'Login/SignUp',
-                path: '/login'
-            },
-            {
                 text: 'My Profile',
                 path: '/profile'
             },

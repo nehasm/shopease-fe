@@ -7,11 +7,6 @@ const Wishlist = (props) => {
     const removeProductFromWishListHandler = () => {
         return props.removeProductFromWishList(props.product.product);
     }
-    const priceWithNoDiscount = 500;
-    const discount = 80;
-  const moveToCart = () => {
-      
-  }
   return <div className={`${style.cartitem} ${style.wishlistcartitem}`}>
 <div className={style.wishlistdata}>
 <div className={style.productimg}>
@@ -23,11 +18,10 @@ const Wishlist = (props) => {
     <div >
         <span className={style.cartitemtitle}>{props.product.name}</span>
     <div className={style.cartitemprice}>
-    <span>{`₹${props.product.price}`} <span className={style["price-without-discount-text"]}>{`₹${priceWithNoDiscount}`}</span> {`(${discount}%)`}</span>
+    <span>{`₹${props.product.price}`}</span>
     </div>
     <div className={style.removebtn}>
         <button onClick={removeProductFromWishListHandler}>Remove</button>
-        <button onClick={moveToCart}>Add to Cart</button>
     </div>
     </div>
 </div>
