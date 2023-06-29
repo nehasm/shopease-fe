@@ -7,14 +7,14 @@ import { useLocation } from 'react-router-dom';
 
 
 const Payment = () => {
-    const [stripeKey,setStripeKey] = useState("");
+    const stripeKey = process.env.REACT_APP_STRIPE;
     const history = useLocation();
     const orderData = history.state.orderData;
     const priceData = history.state.priceData;
     const cartId = history.state.cartId;
-    useEffect(()=>{
-        getStripeKey().then((data)=>setStripeKey(data.data.stripeApiKey));
-    },[])
+    // useEffect(()=>{
+    //     getStripeKey().then((data)=>setStripeKey(data.data.stripeApiKey));
+    // },[])
   return (
     <Elements stripe={loadStripe(stripeKey)}><Paymentcomp orderData={orderData} priceData={priceData} cartId={cartId}/></Elements>
   )
