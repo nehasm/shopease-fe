@@ -9,6 +9,7 @@ import { addItemInCart } from '../service/cart';
 import { addItemInWishlist} from '../service/user';
 import { useNavigate } from 'react-router-dom';
 import Error from '../component/common/error';
+import { showToast } from '../component/common/toast/toast';
 
 const Product = () => {
   const location = useLocation();
@@ -20,8 +21,12 @@ const Product = () => {
   const productId = location.pathname.split('/')[2];
   const productPresentInWishlist = isAuthenticate ? user?.wishlist?.find(item => item.product.toString() === product?._id?.toString()) : null;
   const addItemInCartHandler = (productId,data) => {
-
-    return dispatch(addItemInCart(productId,cart._id,data))
+    if(isAuthenticate) {
+      dispatch(addItemInCart(productId,cart._id,data));
+      navigate('/cart');
+      return
+    }
+    showToast("error","Please login to add item in the cart!")
   }
   const addItemInWishlistHandler = (data) => {
     return dispatch(addItemInWishlist(data))

@@ -66,7 +66,6 @@ const ProductDetails = (props) => {
             quantity:1,
             discount:props.product.discount,
         }
-        navigate('/cart');
         return props.addItemInCartHandler(props.product._id,productData);
     }
     const placeOrder = () => {
