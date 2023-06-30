@@ -27,9 +27,9 @@ const CheckoutWrapper = () => {
     <div className={style.checkoutheader}>
         <span className={style.checkoutswitch}>
             <span  className={`${style.checkouttext} ${summaryActiveClass}`}>Order Summary</span> 
-            <span> ------------------- </span>
+            <span className={style.checkoutheaderlines}> ------------------- </span>
             <span className={`${style.checkouttext} ${addressActiveClass}`}>Address</span>
-            <span> ------------------- </span>
+            <span className={style.checkoutheaderlines}> ------------------- </span>
             <span className={`${style.checkouttext} ${paymentActiveClass}`}>Payment</span>
         </span>
       <span  className={style["product-icon"]}>

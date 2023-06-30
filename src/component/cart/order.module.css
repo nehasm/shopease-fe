@@ -302,5 +302,21 @@
     }
     .wishlistitem { 
         margin: 0;
+    };
+    .addressformmain {
+        border: none;
+        border-radius: 0;
+    }
+    .addressform {
+        padding: 12px;
+    }
+    .checkoutheaderlines {
+        display: none;
+    }
+    .checkouttext {
+        display: none;
+    }
+    .checkouttext.chekout-active-tab {
+        display: block;
     }
 }

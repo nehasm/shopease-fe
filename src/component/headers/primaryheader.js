@@ -35,6 +35,11 @@ const PrimaryHeader = (props) => {
   const moveToWishlist = () => {
     navigate('/wishlist')
   }
+  const moveToCart =() => {
+    if(isAuthenticate) {
+      navigate('/cart')
+    }
+  }
   return (
     <div className={style["primary-header"]}>
       <span className={style["logo"]}>
@@ -80,7 +85,7 @@ const PrimaryHeader = (props) => {
               <p> Wishlist </p>
             </span> 
           </div>
-          <div><span><Link to={'/cart'}> <AiOutlineShoppingCart/> <p> Cart </p></Link></span>{cartLength > 0 && <span className={style.cartcounttt}>{cartLength}</span>} </div>
+          <div onClick={() => moveToCart()}><span><AiOutlineShoppingCart/> <p> Cart </p></span>{cartLength > 0 && <span className={style.cartcounttt}>{cartLength}</span>} </div>
         </div>
         }
       </div>
