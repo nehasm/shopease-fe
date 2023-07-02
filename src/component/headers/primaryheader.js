@@ -65,7 +65,7 @@ const PrimaryHeader = (props) => {
       <div className={style["right-section-main"]}>
       <span onClick={()=>setOpenSideNav(true)} className={style["hamburger"]}> <GiHamburgerMenu />
         </span> 
-        {openSideNav ? isAuthenticate ? <Headernav data={UserNav} headerType={"account"} closeSideNavHandler={closeSideNavHandler}/> : <Headernav data={userNavNotAuthenticated} headerType={"account"} closeSideNavHandler={closeSideNavHandler}/> : 
+        {openSideNav ? isAuthenticate ? <Headernav logoutUserHandler={logoutUserHandler} data={UserNav} headerType={"account"} closeSideNavHandler={closeSideNavHandler}/> : <Headernav logoutUserHandler={logoutUserHandler} data={userNavNotAuthenticated} headerType={"account"} closeSideNavHandler={closeSideNavHandler}/> : 
         <div className={style["right-section"]}>
           <div className={style["account-main"]}>
             <span> 

@@ -19,6 +19,7 @@
     cursor: pointer;
 }
 .tabHeading {
+    margin: 30px;
     color: #0079bf;
     text-decoration: underline;
 }
@@ -27,19 +28,31 @@
     padding: 48px
 }
 .tabmainarea > div {
-    border-radius: 4px;
-    border: 0.5px solid #CFD7DF;
-    padding: 16px;
-    margin:16px
+    margin-bottom: 24px;
 }
 .tabmainarea > div > span:first-child {
     font-style: italic;
     color: #565656;
-    margin-left: 24px;
+    margin-left: 12px;
 }
 .tabmainarea > div > span:last-child {
     color: #0079bf;
-    margin-left: 24px;
+    margin-left: 12px;
+}
+.profilebtn button {
+    border-radius: 4px;
+    cursor: pointer;
+    color: #298fca;
+    background: #fff;
+    width: 100%;
+    padding: 16px 0px;
+    font-size: 14px;
+    border: 1px solid #298fca;
+    margin-top: 12px;
+}
+.profilebtn:hover button {
+    color: #fff;
+    background: #298fca;
 }
 @media only screen and (max-width: 800px) {
     .profilemain {

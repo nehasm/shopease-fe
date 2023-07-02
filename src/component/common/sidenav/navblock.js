@@ -16,6 +16,10 @@ const Navblock = (props) => {
             navigate(props.data.path)
             return;
         }
+        if(props.headerType === "account" && props.data.text === 'Logout'){
+            props.logoutUserHandler();
+            return
+        }
         props.sendCategory(props.data.value);
     }
   return <div>

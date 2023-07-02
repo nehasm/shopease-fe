@@ -9,6 +9,7 @@ import style from './profile.module.css'
 import { clearUserError, getUserData } from '../../service/user';
 import Error from '../common/error';
 import Loader from '../common/loader';
+import {BsArrowLeft} from 'react-icons/bs';
 
 const EditProfile = () => {
 const { user,error,loading,isError} = useSelector((state) => state.user);
@@ -25,6 +26,9 @@ useEffect(()=> {
         dispatch(getUserData());
       }
 },[])
+const moveToProfile = () => {
+  navigate('/profile')
+}
 const editProfileHandler = () => {
     if( formIsValid ){
         dispatch(updateProfile({name,email}))
@@ -54,8 +58,12 @@ const editProfileHandler = () => {
               <div className={fromstyle["form-group"]}>
               <button disabled={!formIsValid} type='submit'>Edit Profile</button>
               </div>
-              
           </form>
+          <div className={style.profilebtn}>
+            <button onClick={moveToProfile}>Back to Profile</button>
+          </div>
+    </div>
+    <div>
     </div>
     </div>}
   </>

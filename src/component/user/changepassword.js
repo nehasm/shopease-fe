@@ -15,6 +15,9 @@ const ChangePassword = () => {
     const {value:newPassword,valueIsValid:newPasswordIsValid ,hasError:newPasswordHasError,valueChangeHandler:newPasswordChangeHandler,inputBlurHandler:newPasswordBlurHandler,reset:newPasswordReset} = useInput('is_password_and_not_empty');
     const {value:confirmPassword,valueIsValid:confirmPasswordIsValid ,hasError:confirmPasswordHasError,valueChangeHandler:confirmPasswordChangeHandler,inputBlurHandler:confirmPasswordBlurHandler,reset:confirmPasswordReset} = useInput('is_password_and_not_empty');
     const passwordIsValid = oldPasswordIsValid && newPasswordIsValid && confirmPasswordIsValid;
+    const moveToProfile = () => {
+        navigate('/profile')
+      }
     const changePasswordHandler = (e) => {
         e.preventDefault();
         if(newPassword === confirmPassword){
@@ -53,6 +56,9 @@ const ChangePassword = () => {
       <button disabled={!passwordIsValid} type='submit'>Change Password</button>
       </div>
   </form>
+  <div className={style.profilebtn}>
+            <button onClick={moveToProfile}>Back to Profile</button>
+          </div>
   </div>
   </div>
 }
